@@ -14,10 +14,13 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+// Route::get('/home', 'HomeController@index')->name('home');
+
 
 /* User route start */
 
-// Route::get('/', 'UserViewController@home')->name('home');
+Route::get('/', 'UserController@home')->name('home');
+// Route::get('/', 'UserController@product')->name('product');
 // Route::get('/viewPost/{id}', 'UserViewController@viewPost')->name('viewPost');
 
 /* User route end */
@@ -27,4 +30,4 @@ Auth::routes();
 // Route::get('/logout', 'Auth\LoginController@logout');
 /* Logout route end */
 
-Route::get('/home', 'HomeController@index')->name('home');
+
