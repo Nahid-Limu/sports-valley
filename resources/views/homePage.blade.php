@@ -148,11 +148,6 @@
 					</div>
 					<span style="margin-left: 20px"><a href="#" class="btn btn-primary btn-sm">See More </a></span>
 					
-                    {{-- <div class="row">
-                        <div class="col-md-12 text-center">
-                            <p><a href="#" class="btn btn-primary btn-lg">Shop All Products</a></p>
-                        </div>
-                    </div> --}}
 				</div>
             <hr>
 
