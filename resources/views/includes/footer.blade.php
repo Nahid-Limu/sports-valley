@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row row-pb-md">
       <div class="col footer-col colorlib-widget">
-        <h4>About Footwear</h4>
+        <h4>About Sports-Valley</h4>
         <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
         <p>
           <ul class="colorlib-social-icons">
@@ -13,7 +13,7 @@
           </ul>
         </p>
       </div>
-      <div class="col footer-col colorlib-widget">
+      {{-- <div class="col footer-col colorlib-widget">
         <h4>Customer Care</h4>
         <p>
           <ul class="colorlib-footer-links">
@@ -26,8 +26,8 @@
             <li><a href="#">Site maps</a></li>
           </ul>
         </p>
-      </div>
-      <div class="col footer-col colorlib-widget">
+      </div> --}}
+      {{-- <div class="col footer-col colorlib-widget">
         <h4>Information</h4>
         <p>
           <ul class="colorlib-footer-links">
@@ -38,18 +38,18 @@
             <li><a href="#">Order Tracking</a></li>
           </ul>
         </p>
-      </div>
+      </div> --}}
 
-      <div class="col footer-col">
+      {{-- <div class="col footer-col">
         <h4>News</h4>
         <ul class="colorlib-footer-links">
           <li><a href="blog.html">Blog</a></li>
           <li><a href="#">Press</a></li>
           <li><a href="#">Exhibitions</a></li>
         </ul>
-      </div>
+      </div> --}}
 
-      <div class="col footer-col">
+      <div class="float-left">
         <h4>Contact Information</h4>
         <ul class="colorlib-footer-links">
           <li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
@@ -65,9 +65,9 @@
       <div class="col-sm-12 text-center">
         <p>
           <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | 
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span> 
-          <span class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> , <a href="http://pexels.com/" target="_blank">Pexels.com</a></span>
+          <span class="block">Developed by --<a href="https://www.facebook.com/nahidlimu" target="_blank">Nahid Limu</a></span>
         </p>
       </div>
     </div>

@@ -17,10 +17,12 @@
 // Route::get('/home', 'HomeController@index')->name('home');
 
 
+
+
 /* User route start */
 
 Route::get('/', 'UserController@home')->name('home');
-// Route::get('/', 'UserController@product')->name('product');
+Route::get('/productDetails', 'UserController@productDetails')->name('productDetails');
 // Route::get('/viewPost/{id}', 'UserViewController@viewPost')->name('viewPost');
 
 /* User route end */

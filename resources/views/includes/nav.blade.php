@@ -29,8 +29,8 @@
               </ul>
             </li>
             <li><a href="women.html">Sports Accessories</a></li>
-            <li><a href="about.html">Gym Accessories</a></li>
-            <li><a href="contact.html">Jersey Collection</a></li>
+            <li><a href="about.html">Sports Wear</a></li>
+            <li><a href="contact.html">Fitness</a></li>
                             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact Us</a></li>
             <li class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a></li>

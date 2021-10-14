@@ -8,12 +8,12 @@ class UserController extends Controller
 {
     public function home()
     {
-        return view('home');
+        return view('homePage');
     }
 
 
-    public function product()
+    public function productDetails()
     {
-        return view('product');
+        return view('productDetails');
     }
 }
