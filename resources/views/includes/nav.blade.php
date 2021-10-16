@@ -4,6 +4,7 @@
       <div class="row">
         <div class="col-sm-7 col-md-9">
           <div id="colorlib-logo"><a href="index.html">Sports Valley</a></div>
+          <span class="text-danger">Let's play The Game</span>
         </div>
         <div class="col-sm-5 col-md-3">
               <form action="#" class="search-wrap">
