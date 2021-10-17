@@ -19,7 +19,7 @@
         <div class="col-sm-12 text-left menu-1">
           <ul>
             <li class="active"><a href="index.html">Home</a></li>
-            <li class="has-dropdown">
+            {{-- <li class="has-dropdown">
               <a href="men.html">Men</a>
               <ul class="dropdown">
                 <li><a href="product-detail.html">Product Detail</a></li>
@@ -28,7 +28,7 @@
                 <li><a href="order-complete.html">Order Complete</a></li>
                 <li><a href="add-to-wishlist.html">Wishlist</a></li>
               </ul>
-            </li>
+            </li> --}}
             <li><a href="women.html">Sports Accessories</a></li>
             <li><a href="about.html">Sports Wear</a></li>
             <li><a href="contact.html">Fitness</a></li>
