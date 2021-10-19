@@ -18,19 +18,21 @@
 		
 		{{-- <h2 style="text-align: center;color: gray">ALL Category</h2> --}}
 		<div class="colorlib-intro">
-		
-			<h2 class="intro" style="text-align: center;color: gray">ALL Category</h2>
+			<div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+				<h2>Business Category</h2>
+			</div>
+			{{-- <h2 class="intro" style="text-align: center;color: gray">ALL Category</h2> --}}
 			<div class="row bg-warning text-dark">
 				<div class="col partner-col text-center">
-					<a href="http://"> <img src="system_img/cat1.jpeg" class="img-fluid rounded-circle" alt="Free html4 bootstrap 4 template">
+					<a href="{{ route('categoryDetails', [base64_encode('SportsAccessories')] ) }}"> <img src="system_img/cat1.jpeg" class="img-fluid rounded-circle" alt="Free html4 bootstrap 4 template">
 					<span class="text-center "> <kbd>Sports Accessories</kbd> </span> </a>
 				</div>
 				<div class="col partner-col text-center">
-					<a href="http://"> <img src="system_img/cat2.png" class="img-fluid rounded-circle" alt="Free html4 bootstrap 4 template">
+					<a href="{{ route('categoryDetails', 'SportsWear') }}"> <img src="system_img/cat2.png" class="img-fluid rounded-circle" alt="Free html4 bootstrap 4 template">
 					<span class="text-center "> <kbd>Sports Wear</kbd> </span> </a>
 				</div>
 				<div class="col partner-col text-center">
-					<a href="http://"><img src="system_img/cat3.png" class="img-fluid rounded-circle" alt="Free html4 bootstrap 4 template">
+					<a href="{{ route('categoryDetails', 'Fitness') }}"><img src="system_img/cat3.png" class="img-fluid rounded-circle" alt="Free html4 bootstrap 4 template">
 					<span class="text-center "> <kbd>Fitness</kbd> </span> </a> 
 				</div>			
 			</div>
@@ -151,6 +153,33 @@
 				</div>
             <hr>
 
+		</div>
+
+		<div class="colorlib-partner">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+						<h2>Brandes We Provide</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col partner-col text-center">
+						<img src="images/brand-1.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+					</div>
+					<div class="col partner-col text-center">
+						<img src="images/brand-2.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+					</div>
+					<div class="col partner-col text-center">
+						<img src="images/brand-3.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+					</div>
+					<div class="col partner-col text-center">
+						<img src="images/brand-4.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+					</div>
+					<div class="col partner-col text-center">
+						<img src="images/brand-5.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+					</div>
+				</div>
+			</div>
 		</div>
 
 		

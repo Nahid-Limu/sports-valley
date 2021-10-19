@@ -11,25 +11,27 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/home', 'HomeController@index')->name('home');
-
-
-
 
 /* User route start */
 
 Route::get('/', 'UserController@home')->name('home');
+Route::get('/categoryDetails/{cat}', 'UserController@categoryDetails')->name('categoryDetails');
 Route::get('/productDetails', 'UserController@productDetails')->name('productDetails');
-// Route::get('/viewPost/{id}', 'UserViewController@viewPost')->name('viewPost');
 
 /* User route end */
 
+
+/* Admin route start */
 Auth::routes();
 /* Logout route start */
-// Route::get('/logout', 'Auth\LoginController@logout');
+    Route::get('/logout', 'Auth\LoginController@logout');
 /* Logout route end */
+Route::group(['middleware'=>'auth'], function () {
+
+    //dashboard
+    Route::get('/dashbord', 'AdminController@viewDashboard')->name('dashboard');
+    
+});
+/* Admin route end */
 
 
