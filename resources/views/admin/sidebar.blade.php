@@ -69,6 +69,32 @@
     </li>
 
     <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Seetings
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Seetings</span></a>
+      </a>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Seetings Module:</h6>
+          <a class="collapse-item" href="{{ route ('businessSettings') }}">Business Categories</a>
+          <a class="collapse-item" href="">Expense History</a>
+          <a class="collapse-item" href="">Expense Settings</a>
+        </div>
+      </div>
+    </li>
+
+    <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
     {{-- @if(Auth::user()->is_role == 'admin' || Auth::user()->is_role == 'superadmin') --}}
         

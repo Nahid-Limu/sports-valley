@@ -28,8 +28,15 @@ Auth::routes();
 /* Logout route end */
 Route::group(['middleware'=>'auth'], function () {
 
-    //dashboard
+    // dashboard
     Route::get('/dashbord', 'AdminController@viewDashboard')->name('dashboard');
+
+    //--settings--//
+    Route::get('/businessSettings', 'BusinessController@businessSettings')->name('businessSettings');
+    Route::post('/addBusinessCat', 'BusinessController@addBusinessCat')->name('addBusinessCat');
+    Route::get('/editBusinessCat/{id}', 'BusinessController@editBusinessCat')->name('editBusinessCat');
+    Route::post('/updateBusinessCat', 'BusinessController@updateBusinessCat')->name('updateBusinessCat');
+    Route::get('/deleteCat/{id}', 'BusinessController@deleteCat')->name('deleteCat');
     
 });
 /* Admin route end */
