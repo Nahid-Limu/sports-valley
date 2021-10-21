@@ -16,7 +16,7 @@
 
 Route::get('/', 'UserController@home')->name('home');
 Route::get('/categoryDetails/{cat}', 'UserController@categoryDetails')->name('categoryDetails');
-Route::get('/productDetails', 'UserController@productDetails')->name('productDetails');
+Route::get('/productDetails/{id}', 'UserController@productDetails')->name('productDetails');
 
 /* User route end */
 

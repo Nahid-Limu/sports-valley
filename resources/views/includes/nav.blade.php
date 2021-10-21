@@ -29,9 +29,9 @@
                 <li><a href="add-to-wishlist.html">Wishlist</a></li>
               </ul>
             </li> --}}
-            <li><a href="{{ route('categoryDetails', 'SportsAccessories') }}">Sports Accessories</a></li>
-            <li><a href="{{ route('categoryDetails', 'SportsWear') }}">Sports Wear</a></li>
-            <li><a href="{{ route('categoryDetails', 'Fitness') }}">Fitness</a></li>
+            <li><a href="{{ route('categoryDetails', [base64_encode('Sports Accessories')] ) }}">Sports Accessories</a></li>
+            <li><a href="{{ route('categoryDetails', [base64_encode('Sports Wear')] ) }}">Sports Wear</a></li>
+            <li><a href="{{ route('categoryDetails', [base64_encode('Fitness')] ) }}">Fitness</a></li>
                             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact Us</a></li>
             <li class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a></li>

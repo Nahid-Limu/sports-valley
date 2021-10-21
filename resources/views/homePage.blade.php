@@ -24,15 +24,15 @@
 			{{-- <h2 class="intro" style="text-align: center;color: gray">ALL Category</h2> --}}
 			<div class="row bg-warning text-dark">
 				<div class="col partner-col text-center">
-					<a href="{{ route('categoryDetails', [base64_encode('SportsAccessories')] ) }}"> <img src="system_img/cat1.jpeg" class="img-fluid rounded-circle" alt="Free html4 bootstrap 4 template">
+					<a href="{{ route('categoryDetails', [base64_encode('Sports Accessories')] ) }}"> <img src="system_img/cat1.jpeg" class="img-fluid rounded-circle" alt="Free html4 bootstrap 4 template">
 					<span class="text-center "> <kbd>Sports Accessories</kbd> </span> </a>
 				</div>
 				<div class="col partner-col text-center">
-					<a href="{{ route('categoryDetails', 'SportsWear') }}"> <img src="system_img/cat2.png" class="img-fluid rounded-circle" alt="Free html4 bootstrap 4 template">
+					<a href="{{ route('categoryDetails', [base64_encode('Sports Wear')]) }}"> <img src="system_img/cat2.png" class="img-fluid rounded-circle" alt="Free html4 bootstrap 4 template">
 					<span class="text-center "> <kbd>Sports Wear</kbd> </span> </a>
 				</div>
 				<div class="col partner-col text-center">
-					<a href="{{ route('categoryDetails', 'Fitness') }}"><img src="system_img/cat3.png" class="img-fluid rounded-circle" alt="Free html4 bootstrap 4 template">
+					<a href="{{ route('categoryDetails', [base64_encode('Fitness')]) }}"><img src="system_img/cat3.png" class="img-fluid rounded-circle" alt="Free html4 bootstrap 4 template">
 					<span class="text-center "> <kbd>Fitness</kbd> </span> </a> 
 				</div>			
 			</div>

@@ -24,6 +24,7 @@
         <thead>
             <tr>
                 <th class="text-center">#NO</th>
+                <th class="text-center">Category</th>
                 <th class="text-center">Category Product</th>
                 <th class="text-center">Image</th>
                 <th class="text-center">Action</th>
@@ -74,6 +75,10 @@
         { 
             data: 'DT_RowIndex', 
             name: 'DT_RowIndex' 
+        },
+        {
+            data: 'cat_name',
+            name: 'cat_name'
         },
         {
             data: 'cat_product',

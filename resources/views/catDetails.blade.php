@@ -26,32 +26,23 @@
     
     <div class="colorlib-featured">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-4 text-center">
-                    <div class="featured">
-                        <div class="featured-img featured-img-2" style="background-image: url( {{ asset('images/img_bg_2.jpg') }} );">
-                            <h2>Casuals</h2>
-                            <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+            @if (count($cat_details))
+                <div class="row">
+                    @foreach ($cat_details as $cd)
+                        <div class="col-sm-4 text-center">
+                            <div class="featured">
+                                <div class="featured-img featured-img-2" style="background-image: url(  {{ asset('category_product_img').'/'.$cd->image }}  );">
+                                    <h2 class="font-weight-bold" style="color: aqua"> {{ $cd->cat_product }} </h2>
+                                    <p><a href="{{ route('productDetails', [base64_encode($cd->id)] ) }}" class="btn btn-primary btn-lg">Shop now</a></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="col-sm-4 text-center">
-                    <div class="featured">
-                        <div class="featured-img featured-img-2" style="background-image: url( {{ asset('images/women.jpg') }} );">
-                            <h2>Dress</h2>
-                            <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center">
-                    <div class="featured">
-                        <div class="featured-img featured-img-2" style="background-image: url( {{ asset('images/item-11.jpg') }} );">
-                            <h2>Sports</h2>
-                            <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @else
+                <h1 class="text-danger font-italic d-flex justify-content-center">Sorry No Product available</h1>
+            @endif
+            <span class="d-flex justify-content-center">{{ $cat_details->links() }}</span>
         </div>
     </div>
 

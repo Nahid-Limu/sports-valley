@@ -14,7 +14,13 @@ class CategoryController extends Controller
 {
     public function categorySettings()
     {
-        $CategoryDetails = CategoryDetails::all(['id','cat_product','image']);
+        $CategoryDetails = DB::table('category_details')
+            ->join('business_categories', 'category_details.bc_id', '=', 'business_categories.id')
+            
+            ->select('category_details.id','business_categories.cat_name','category_details.cat_product','category_details.image')
+            ->get();
+            // dd($CategoryDetails);
+        // $CategoryDetails = CategoryDetails::all(['id','cat_product','image']);
 
         if(request()->ajax())
         {
@@ -58,7 +64,7 @@ class CategoryController extends Controller
 
                 $filename = time().'-'.$image->getClientOriginalName();
                 $path = public_path('category_product_img/' . $filename);
-                Image::make($image->getRealPath())->resize(600, 600)->save($path);
+                Image::make($image->getRealPath())->resize(500, 300)->save($path);
 
             $CategoryDetails->image =$filename;
             $CategoryDetails->save();
