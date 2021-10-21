@@ -31,13 +31,19 @@ Route::group(['middleware'=>'auth'], function () {
     // dashboard
     Route::get('/dashbord', 'AdminController@viewDashboard')->name('dashboard');
 
-    //--settings--//
+    //--settings--// (businessSettings)
     Route::get('/businessSettings', 'BusinessController@businessSettings')->name('businessSettings');
     Route::post('/addBusinessCat', 'BusinessController@addBusinessCat')->name('addBusinessCat');
     Route::get('/editBusinessCat/{id}', 'BusinessController@editBusinessCat')->name('editBusinessCat');
     Route::post('/updateBusinessCat', 'BusinessController@updateBusinessCat')->name('updateBusinessCat');
     Route::get('/deleteCat/{id}', 'BusinessController@deleteCat')->name('deleteCat');
     
+    //--settings--// (businessSettings)
+    Route::get('/categorySettings', 'CategoryController@categorySettings')->name('categorySettings');
+    Route::post('/addCategory', 'CategoryController@addCategory')->name('addCategory');
+    // Route::get('/editBusinessCat/{id}', 'BusinessController@editBusinessCat')->name('editBusinessCat');
+    // Route::post('/updateBusinessCat', 'BusinessController@updateBusinessCat')->name('updateBusinessCat');
+    Route::get('/deleteCategory/{id}', 'CategoryController@deleteCategory')->name('deleteCategory');
 });
 /* Admin route end */
 

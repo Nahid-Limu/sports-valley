@@ -87,8 +87,8 @@
       <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Seetings Module:</h6>
-          <a class="collapse-item" href="{{ route ('businessSettings') }}">Business Categories</a>
-          <a class="collapse-item" href="">Expense History</a>
+          <a class="collapse-item" href="{{ route ('businessSettings') }}">Business Categorie</a>
+          <a class="collapse-item" href="{{ route ('categorySettings') }}">Categorie Details</a>
           <a class="collapse-item" href="">Expense Settings</a>
         </div>
       </div>

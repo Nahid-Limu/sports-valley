@@ -32,8 +32,8 @@
     </div>
   </div>
 </div>
-@include('admin.modal.addBusinessCat')
-@include('admin.modal.editBusinessCat')
+@include('admin.business.modal.addBusinessCat')
+@include('admin.business.modal.editBusinessCat')
 
 <!-- Delete Confirmation Modal-->
 <div class="modal fade" id="DeleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

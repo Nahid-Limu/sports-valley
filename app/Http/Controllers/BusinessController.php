@@ -29,14 +29,14 @@ class BusinessController extends Controller
                     ->addIndexColumn()
                     ->make(true);
         }
-        return view('admin.businessSettings');
+        return view('admin.business.businessSettings');
     }
 
     public function addBusinessCat(Request $request)
     {
 
         $Business = new BusinessCategory;
-        $Business->cat_name = $request->categorie_name;
+        $Business->cat_name = ucwords($request->categorie_name);
         $Business->save();
 
         if ($Business->id) {

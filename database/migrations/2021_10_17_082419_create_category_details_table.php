@@ -16,7 +16,7 @@ class CreateCategoryDetailsTable extends Migration
         Schema::create('category_details', function (Blueprint $table) {
             $table->increments('id');
             $table->string('bc_id')->nullable()->index();
-            $table->string('cat_name')->nullable();
+            $table->string('cat_product')->nullable();
             $table->text('image')->nullable();
             $table->timestamps();
         });
