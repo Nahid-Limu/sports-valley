@@ -33,7 +33,7 @@
                             <div class="featured">
                                 <div class="featured-img featured-img-2" style="background-image: url(  {{ asset('category_product_img').'/'.$cd->image }}  );">
                                     <h2 class="font-weight-bold" style="color: aqua"> {{ $cd->cat_product }} </h2>
-                                    <p><a href="{{ route('productDetails', [base64_encode($cd->id)] ) }}" class="btn btn-primary btn-lg">Shop now</a></p>
+                                    <p><a href="{{ route('productDetails', [base64_encode($cd->id)] ) }}" class="btn btn-primary btn-md">Click To See All</a></p>
                                 </div>
                             </div>
                         </div>

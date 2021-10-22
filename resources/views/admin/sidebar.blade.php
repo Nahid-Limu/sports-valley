@@ -89,7 +89,7 @@
           <h6 class="collapse-header">Seetings Module:</h6>
           <a class="collapse-item" href="{{ route ('businessSettings') }}">Business Categorie</a>
           <a class="collapse-item" href="{{ route ('categorySettings') }}">Categorie Details</a>
-          <a class="collapse-item" href="">Expense Settings</a>
+          <a class="collapse-item" href="{{ route ('brandSettings') }}">Brands</a>
         </div>
       </div>
     </li>
