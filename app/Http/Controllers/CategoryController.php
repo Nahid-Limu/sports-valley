@@ -79,6 +79,69 @@ class CategoryController extends Controller
         }
     }
 
+    public function editCategory($id)
+    {
+        $CategoryDetails = DB::table('category_details')
+            ->join('business_categories', 'category_details.bc_id', '=', 'business_categories.id')
+            
+            ->select('category_details.id','business_categories.cat_name','category_details.cat_product','category_details.image',DB::raw('business_categories.id AS bid'))
+            ->where('category_details.id', $id)
+            ->first();
+            return response()->json($CategoryDetails);
+    }
+
+    public function updateCategory(Request $request)
+    {
+        // dd($request->all());
+        if ($request->hasFile('eimage')) {
+
+            $CategoryDetails = CategoryDetails::find($request->id);
+            
+            $image=$CategoryDetails->image;
+
+            if($image!=null){
+                $path = public_path() . "/category_product_img/" . $image;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
+            
+
+            // $Brand = new Brand;
+            $CategoryDetails->bc_id = $request->ebusiness_cat;
+            $CategoryDetails->cat_product = strtoupper($request->eproduct_name);
+
+                $image = $request->file('eimage');
+
+                $filename = time().'-'.$image->getClientOriginalName();
+                $path = public_path('category_product_img/' . $filename);
+                Image::make($image->getRealPath())->resize(500, 300)->save($path);
+
+            $CategoryDetails->image =$filename;
+            $CategoryDetails->save();
+
+            if ($CategoryDetails->id) {
+                return response()->json(['success' => 'Category Details Update successfully.']);
+            } else {
+                return response()->json(['failed' => 'Category Details Update failed.']);
+            }
+
+
+        }else {
+            $CategoryDetails = CategoryDetails::find($request->id);
+            $CategoryDetails->bc_id = $request->ebusiness_cat;
+            $CategoryDetails->cat_product = strtoupper($request->eproduct_name);
+            $CategoryDetails->save();
+
+            if ($CategoryDetails->id) {
+                return response()->json(['success' => 'Category Details Update successfully.']);
+            } else {
+                return response()->json(['failed' => 'Category Details Update failed.']);
+            }
+
+        }
+    }
+
     public function deleteCategory($id)
     {
         

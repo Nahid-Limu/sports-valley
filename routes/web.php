@@ -41,8 +41,8 @@ Route::group(['middleware'=>'auth'], function () {
     //--settings--// (categorySettings)
     Route::get('/categorySettings', 'CategoryController@categorySettings')->name('categorySettings');
     Route::post('/addCategory', 'CategoryController@addCategory')->name('addCategory');
-    // Route::get('/editBusinessCat/{id}', 'BusinessController@editBusinessCat')->name('editBusinessCat');
-    // Route::post('/updateBusinessCat', 'BusinessController@updateBusinessCat')->name('updateBusinessCat');
+    Route::get('editCategory/{id}','CategoryController@editCategory')->name('editCategory');
+    Route::post('/updateCategory', 'CategoryController@updateCategory')->name('updateCategory');
     Route::get('/deleteCategory/{id}', 'CategoryController@deleteCategory')->name('deleteCategory');
 
     //--settings--// (brandsSettings)
@@ -51,6 +51,14 @@ Route::group(['middleware'=>'auth'], function () {
     Route::get('/editBrand/{id}', 'BrandController@editBrand')->name('editBrand');
     Route::post('/updateBrand', 'BrandController@updateBrand')->name('updateBrand');
     Route::get('/deleteBrand/{id}', 'BrandController@deleteBrand')->name('deleteBrand');
+
+    //--settings--// (productSettings)
+    // Route::get('/brandSettings', 'BrandController@brandSettings')->name('brandSettings');
+    // Route::post('/addBrand', 'BrandController@addBrand')->name('addBrand');
+    // Route::get('/editBrand/{id}', 'BrandController@editBrand')->name('editBrand');
+    // Route::post('/updateBrand', 'BrandController@updateBrand')->name('updateBrand');
+    // Route::get('/deleteBrand/{id}', 'BrandController@deleteBrand')->name('deleteBrand');
+
 });
 /* Admin route end */
 

@@ -173,7 +173,7 @@
           
       } else {
           $("#ebrand_name").addClass("errorInputBox");
-          $("#ebrand_name").text('Category Name Is Required').addClass("ErrorMsg");
+          $("#ecat_nameError").text('Category Name Is Required').addClass("ErrorMsg");
       }
 
 

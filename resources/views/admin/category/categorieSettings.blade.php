@@ -163,65 +163,80 @@
         }
     }
 
-    // function editBusinessCategory(CatId) {
-    //   $.ajax({
-    //       type: 'GET',
-    //       url: "{{url('editBusinessCat')}}"+"/"+CatId,
-    //       success: function (response) {
-    //           console.log(response);
-    //           if (response) {
+    function editBusinessCategory(CatId) {
+      $.ajax({
+          type: 'GET',
+          url: "{{url('editCategory')}}"+"/"+CatId,
+          success: function (response) {
+              console.log(response);
+              if (response) {
                 
-    //             $('#edit_cat_id').val(response.id);
-    //             $('#ecat_name').val(response.cat_name);
+                $('#edit_categorie_id').val(response.id);
+                $('#eproduct_name').val(response.cat_product);
+                $('#ebusiness_cat_id').val(response.bid).attr("selected", "selected");
                 
-    //           }
+              }
 
-    //       },error:function(){ 
-    //           console.log(response);
-    //       }
-    //   });
-    // }
+          },error:function(){ 
+              console.log(response);
+          }
+      });
+    }
 
-    // function updateCat(params) {
+    function updateCat(params) {
       
       
-    //   if ( $( "#ecat_name" ).val() != '' ) {
-    //       $("#ecat_name").removeClass("errorInputBox");
-    //       $("#ecat_nameError").text('').removeClass("ErrorMsg");;
+      if ( $( "#ebusiness_cat_id" ).val() != '' ) {
+          $("#ebusiness_cat_id").removeClass("errorInputBox");
+          $("#business_catError").text('').removeClass("ErrorMsg");;
           
-    //   } else {
-    //       $("#ecat_name").addClass("errorInputBox");
-    //       $("#ecat_nameError").text('Category Name Is Required').addClass("ErrorMsg");
-    //   }
+      } else {
+          $("#ebusiness_cat_id").addClass("errorInputBox");
+          $("#business_catError").text('Select One Is Required').addClass("ErrorMsg");
+      }
+
+      if ( $( "#eproduct_name" ).val() != '' ) {
+          $("#eproduct_name").removeClass("errorInputBox");
+          $("#eproduct_nameError").text('').removeClass("ErrorMsg");;
+          
+      } else {
+          $("#eproduct_name").addClass("errorInputBox");
+          $("#eproduct_nameError").text('Product Name Is Required').addClass("ErrorMsg");
+      }
 
 
-    //   if ( $( "#ecat_name" ).val() ) {
-    //       $( "#ecat_nameError").text('');
-    //       $( "#ecat_name").removeClass("errorInputBox");
+      if ( $( "#ebusiness_cat_id" ).val() && $( "#eproduct_name" ).val() ) {
+          $( "#business_catError","#eproduct_nameError").text('');
+          $( "#ebusiness_cat_id","#eproduct_name").removeClass("errorInputBox");
         
-    //       var myData =  $('#EditCategoryForm').serialize();
-    //       // alert(data);
-    //       $.ajax({
-    //           type: 'POST',
-    //           url: "{{ route('updateBusinessCat') }}",
-    //           data: myData,
-    //           success: function (response) {
-    //               console.log(response);
-    //               if (response.success) {
+          var form = $('#EditCategoryDetailsForm')[0];
+          var formdata = new FormData(form);
+          $.ajax({
+                  url:"{{ route('updateCategory') }}",
+                  method:"POST",
+                  data:formdata,
+                  dataType:'JSON',
+                  contentType: false,
+                  cache: false,
+                  processData: false,
+                  success:function(response)
+                  {
+                    console.log(response);
+                    if (response.success) {
                       
-    //                 $("#success_message").text(response.success);
-    //                 $('#BusinessListTable').DataTable().ajax.reload();
-    //                 $('#EditBusinessCategoryModal').modal('hide');
-                    
-    //                 SuccessMsg();
-    //               }
-
-    //           },error:function(){ 
-    //               console.log(response);
-    //           }
-    //       });
-    //   }
-    // }
+                      $("#success_message").text(response.success);
+                      $('#CategoryDetailsListTable').DataTable().ajax.reload();
+                      $('#EditBusinessCategoryModal').modal('hide');
+                      
+                      SuccessMsg();
+                    }
+                  },
+                  error: function(response) {
+                      // console.log(response);
+                  }
+          })
+      }
+    }
 
     function deleteModal(CatId,CatName) {
       $("#dtn").text('[ '+CatName+' ]');
