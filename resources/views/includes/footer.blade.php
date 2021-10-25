@@ -52,10 +52,10 @@
       <div class="float-left">
         <h4>Contact Information</h4>
         <ul class="colorlib-footer-links">
-          <li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
-          <li><a href="tel://1234567920">+ 1235 2355 98</a></li>
-          <li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-          <li><a href="#">yoursite.com</a></li>
+          <li><i class="icon-shop"></i> Cinema Hall Road, <br>    Hazi Ibrahim Market, Panchagarh</li>
+          <li><i class="icon-phone"></i><a href="tel://01625836160"> +88 01625836160</a></li>
+          <li><i class="icon-mail"></i><a href="mailto:info@yoursite.com"> info@sports-valley.net</a></li>
+          <li><i class="icon-home"></i><a href="#"> sports-valley.net</a></li>
         </ul>
       </div>
     </div>

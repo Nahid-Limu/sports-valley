@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('brand_id')->nullable()->index();
             $table->integer('quantity')->nullable();
             $table->float('buying_price')->nullable();
-            $table->float('selling _price')->nullable();
+            $table->float('selling_price')->nullable();
             // $table->text('image')->nullable();
             $table->string('product_description')->nullable();
             $table->timestamps();

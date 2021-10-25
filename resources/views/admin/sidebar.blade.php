@@ -24,36 +24,36 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-      Seetings
+      Product Details
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link" href="">
+      <a class="nav-link" href="{{ route('productSettings') }}">
         <i class="fas fa-fw fa-cog"></i>
-        <span>Setting Test</span></a>
+        <span>Product </span></a>
     </li>
 
     {{-- @if(Auth::user()->is_role == 'admin' || Auth::user()->is_role == 'superadmin') --}}
     
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link" href="">
         <i class="fas fa-users"></i>
         <span>Setting User</span></a>
-    </li>
+    </li> --}}
     {{-- @endif --}}
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    {{-- <hr class="sidebar-divider"> --}}
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    {{-- <div class="sidebar-heading">
       Addons
-    </div>
+    </div> --}}
 
     <!-- Nav Item - Pages Collapse Menu -->
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
         <i class="far fa-money-bill-alt"></i>
         <span>Expense</span></a>
@@ -66,7 +66,7 @@
           <a class="collapse-item" href="">Expense Settings</a>
         </div>
       </div>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -98,14 +98,14 @@
     <hr class="sidebar-divider d-none d-md-block">
     {{-- @if(Auth::user()->is_role == 'admin' || Auth::user()->is_role == 'superadmin') --}}
         
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link" href="">
         <i class="fas fa-file-csv"></i>
         <span>Report</span></a>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    {{-- <hr class="sidebar-divider"> --}}
 
     {{-- @endif --}}
 

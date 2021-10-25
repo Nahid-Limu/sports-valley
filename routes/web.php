@@ -53,8 +53,8 @@ Route::group(['middleware'=>'auth'], function () {
     Route::get('/deleteBrand/{id}', 'BrandController@deleteBrand')->name('deleteBrand');
 
     //--settings--// (productSettings)
-    // Route::get('/brandSettings', 'BrandController@brandSettings')->name('brandSettings');
-    // Route::post('/addBrand', 'BrandController@addBrand')->name('addBrand');
+    Route::get('/productSettings', 'ProductController@productSettings')->name('productSettings');
+    Route::post('/addProduct', 'ProductController@addProduct')->name('addProduct');
     // Route::get('/editBrand/{id}', 'BrandController@editBrand')->name('editBrand');
     // Route::post('/updateBrand', 'BrandController@updateBrand')->name('updateBrand');
     // Route::get('/deleteBrand/{id}', 'BrandController@deleteBrand')->name('deleteBrand');
