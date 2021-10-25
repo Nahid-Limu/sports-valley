@@ -3,7 +3,10 @@
     <div class="row row-pb-md">
       <div class="col footer-col colorlib-widget">
         <h4>About Sports-Valley</h4>
-        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
+        <p>
+          SPORTS VALLEY is a Platfrom Where We Provide Sports Axxesories, Sports Good, Sports Wear, Fitness Equipment and Other Sports related product.
+          We Provide our Customers with the best Satisfaction for Sustainable competivtive advantage.
+        </p>
         <p>
           <ul class="colorlib-social-icons">
             <li><a href="#"><i class="icon-twitter"></i></a></li>

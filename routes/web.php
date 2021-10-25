@@ -57,7 +57,7 @@ Route::group(['middleware'=>'auth'], function () {
     Route::post('/addProduct', 'ProductController@addProduct')->name('addProduct');
     // Route::get('/editBrand/{id}', 'BrandController@editBrand')->name('editBrand');
     // Route::post('/updateBrand', 'BrandController@updateBrand')->name('updateBrand');
-    // Route::get('/deleteBrand/{id}', 'BrandController@deleteBrand')->name('deleteBrand');
+    Route::get('/deleteProduct/{id}', 'ProductController@deleteProduct')->name('deleteProduct');
 
 });
 /* Admin route end */

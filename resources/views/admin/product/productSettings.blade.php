@@ -20,7 +20,7 @@
 
     <!-- Card Body -->
     <div class="card-body">
-      <table id="ProductDetailsListTable" class="table table-striped table-bordered">
+      <table id="ProductDetailsListTable" class="table table-striped table-bordered" style="width:100%; ">
         <thead>
             <tr>
                 <th class="text-center">#NO</th>
@@ -31,6 +31,7 @@
                 <th class="text-center">Buying Price</th>
                 <th class="text-center">Selling Price</th>
                 <th class="text-center">Images</th>
+                <th class="text-center">Description</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -52,11 +53,11 @@
           <span aria-hidden="true">×</span>
         </button>
       </div>
-      <div class="modal-body">Select "Delete" below if you are <strong>Sure</strong> to <strong>Delete</strong> this <strong id="dtn"></strong> Business Categorie. </div>
+      <div class="modal-body">Select "Delete" below if you are <strong>Sure</strong> to <strong>Delete</strong> this <strong id="dtn"></strong> Product !!!. </div>
       <div class="modal-footer" style="display: inline">
-        <input type="hidden" id="delete_cat_id" value="">
+        <input type="hidden" id="delete_product_id" value="">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <button onclick="deleteCat($('#delete_cat_id').val())" class="btn btn-danger float-right" type="button">Delete</button>
+        <button onclick="deleteProduct($('#delete_product_id').val())" class="btn btn-danger float-right" type="button">Delete</button>
       </div>
     </div>
   </div>
@@ -73,7 +74,7 @@
       responsive: true,
       "order": [[ 0, "asc" ]],
       ajax:{
-      url: "{{ route('categorySettings') }}",
+      url: "{{ route('productSettings') }}",
       },
       columns:[
         { 
@@ -81,16 +82,36 @@
             name: 'DT_RowIndex' 
         },
         {
-            data: 'cat_name',
-            name: 'cat_name'
+            data: 'cat',
+            name: 'cat'
         },
         {
-            data: 'cat_product',
-            name: 'cat_product'
+            data: 'barnd',
+            name: 'barnd'
+        },
+        {
+            data: 'name',
+            name: 'name'
+        },
+        {
+            data: 'quantity',
+            name: 'quantity'
+        },
+        {
+            data: 'buying_price',
+            name: 'buying_price'
+        },
+        {
+            data: 'selling_price',
+            name: 'selling_price'
         },
         {
             data: 'image',
             name: 'image'
+        },
+        {
+            data: 'product_description',
+            name: 'product_description'
         },
         {
             data: 'action',
@@ -323,22 +344,22 @@
       }
     }
 
-    function deleteModal(CatId,CatName) {
-      $("#dtn").text('[ '+CatName+' ]');
-      $("#delete_cat_id").val(CatId);
+    function deleteModal(Product_Id,Product_Name) {
+      $("#dtn").text('[ '+Product_Name+' ]');
+      $("#delete_product_id").val(Product_Id);
     }
 
-    function deleteCat(CatId) {
+    function deleteProduct(Product_Id) {
       // alert(TestId);
       $.ajax({
           type: 'GET',
-          url: "{{url('deleteCategory')}}"+"/"+CatId,
+          url: "{{url('deleteProduct')}}"+"/"+Product_Id,
           success: function (response) {
               console.log(response);
               if (response.success) {
                       
                 $("#success_message").text(response.success);
-                $('#CategoryDetailsListTable').DataTable().ajax.reload();
+                $('#ProductDetailsListTable').DataTable().ajax.reload();
                 $('#DeleteConfirmationModal').modal('hide');
 
                 SuccessMsg();

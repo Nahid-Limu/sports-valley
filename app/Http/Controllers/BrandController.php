@@ -43,6 +43,16 @@ class BrandController extends Controller
 
     public function addBrand(Request $request)
     {
+        $Brand = Brand::all()->count();
+        if (empty($Brand)) {
+           
+            $Brand = new Brand;
+            $Brand->id = 99;
+            $Brand->name = strtoupper('Non Brand');
+            $Brand->save();
+            
+        }
+
         if ($request->hasFile('image')) {
             // dd($request->all());
             $Brand = new Brand;

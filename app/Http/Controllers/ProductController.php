@@ -18,31 +18,44 @@ class ProductController extends Controller
 {
     public function productSettings()
     {
+
         $products = DB::table('products')
             ->join('category_details', 'products.cd_id', '=', 'category_details.id')
             ->join('brands', 'products.brand_id', '=', 'brands.id')
-            ->select('products.id','products.name','products.quantity','products.buying_price','products.selling_price','products.product_description',DB::raw('category_details.cat_product as cat, brands.name as barnd'))
+            ->join('product_images', 'products.id', '=', 'product_images.p_id')
+            ->select('products.id','products.name','products.quantity',
+                'products.buying_price','products.selling_price',
+                'products.product_description',
+                DB::raw('category_details.cat_product as cat, brands.name as barnd'),
+                DB::raw("(GROUP_CONCAT(product_images.image SEPARATOR '@')) as `image`") )
+            ->groupBy('products.id')
             ->get();
             // dd($products);
         // $CategoryDetails = CategoryDetails::all(['id','cat_product','image']);
 
         if(request()->ajax())
         {
-            return datatables()->of($CategoryDetails)
+            return datatables()->of($products)
 
 
                     ->addColumn('image', function($data){
-                        $url= asset('category_product_img').'/'.$data->image; 
-                        $button = " <div class='text-center'>
-                                        <img src='$url' class='img-fluid' style='widows: 40px; height: 40px;'>
-                                    </div>  ";
+
+                            $img = explode("@",$data->image);
+                            $button = " <div class='text-center'>";
+                                foreach ($img as $key => $value) {
+                                    
+                                    $url= asset('product_img').'/'.$value;
+                                    $button .= " <img src='$url' style='widows: 40px; height: 40px; margin-bottom: 10px;'> </br> ";
+                                }
+                            $button .= "</div>";
+                        
                         // $button .= '&nbsp;&nbsp;';
                         return $button;   
                     })
                     
                     ->addColumn('action', function($data){
                         $button = '<div class="d-flex justify-content-center"><button type="button" onclick="editBusinessCategory('.$data->id.')" name="edit" id="'.$data->id.'" class="edit btn btn-sm d-flex justify-content-center" data-toggle="modal" data-target="#EditBusinessCategoryModal" data-placement="top" title="Edit"><i class="fa fa-edit" style="color: aqua"> Edit</i></button>';
-                        $button .= '<button type="button" onclick="deleteModal('.$data->id.',\''.$data->cat_product.'\')" name="delete" id="'.$data->id.'" class="delete btn btn-sm" data-toggle="modal" data-target="#DeleteConfirmationModal" data-placement="top" title="Delete"  style="color: red"><i class="fa fa-trash"> Delete</i></button></div>';
+                        $button .= '<button type="button" onclick="deleteModal('.$data->id.',\''.$data->name.'\')" name="delete" id="'.$data->id.'" class="delete btn btn-sm" data-toggle="modal" data-target="#DeleteConfirmationModal" data-placement="top" title="Delete"  style="color: red"><i class="fa fa-trash"> Delete</i></button></div>';
                         
                         return $button;
                     })
@@ -59,9 +72,6 @@ class ProductController extends Controller
     public function addProduct(Request $request)
     {
 
-        // $now = Carbon::now('utc')->toDateTimeString();
-        // dd($now );
-        // dd($request->all());
         if ($request->hasFile('image')) {
 
             $Product = new Product;
@@ -78,11 +88,10 @@ class ProductController extends Controller
             // product images insert start
             $now = Carbon::now('utc')->toDateTimeString();
 
-            foreach($request->file('image') as $image)
+            foreach($request->file('image') as $key => $image)
             {
-                $filename = time().'-'.$request->product_name.'.'.$image->getClientOriginalExtension();
+                $filename = time().'-'.$request->product_name.$key.'.'.$image->getClientOriginalExtension();
                 $image->move(public_path().'/product_img/', $filename);  
-                
                 $data[] = [
                     'p_id' => $Product->id,
                     'image' => $filename,
@@ -104,5 +113,35 @@ class ProductController extends Controller
         }else {
             return response()->json(['failed' => 'Plese uplode Image.']);
         }
+    }
+
+    public function deleteProduct($id)
+    {
+        // dd($id);
+        $Product = Product::find($id);
+        $ProductImage = ProductImage::select("image")->where("p_id", $id)->get();
+        // dd($ProductImage);
+        
+        //delete image from storage start
+        foreach ($ProductImage as $key => $value) {
+            $image=$value->image;
+            // echo $image.'</br>';
+            if($image!=null){
+                $path = public_path() . "/product_img/" . $image;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
+        }
+        //delete image from storage ens
+        
+        if ($Product) {
+            ProductImage::where("p_id", $id)->delete();
+            $Product->delete();
+            return response()->json(['success' => 'Product Delete Successfully....!!!']);
+        } else {
+            return response()->json(['failed' => 'Product Delete failed.']);
+        }
+
     }
 }

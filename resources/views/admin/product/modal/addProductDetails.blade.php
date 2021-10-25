@@ -40,8 +40,6 @@
                                 @foreach ($Brand as $b)
                                     <option value="{{ $b->id }}">{{ $b->name }}</option>
                                 @endforeach
-                                <option value="99" class="text-danger">Non Brand</option>
-                                
                             </select>
                             <span id="brand_nameError"></span>
                         </div>
