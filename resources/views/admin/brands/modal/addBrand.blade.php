@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-5">
-                            <label class="form-control bg-warning" for="categorie_name">Brand Image</label>
+                            <label class="form-control bg-warning" for="image">Brand Image</label>
                         </div>
                         <div class="form-group col-md-7">
                             {{-- <input type="text" class="form-control" id="categorie_name" name="categorie_name" placeholder="Categorie Name [EX: sports ware] "> --}}

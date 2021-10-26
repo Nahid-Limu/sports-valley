@@ -24,6 +24,7 @@
             <tr>
                 <th class="text-center">#NO</th>
                 <th class="text-center">Business Categories</th>
+                <th class="text-center">Image</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -78,6 +79,10 @@
             name: 'cat_name'
         },
         {
+            data: 'image',
+            name: 'image'
+        },
+        {
             data: 'action',
             name: 'action',
             orderable: false
@@ -96,21 +101,32 @@
             $( "#categorie_nameError").text('Categorie Name Is Required').addClass("ErrorMsg");
         }
 
+        if ( $( "#image" ).val() != '' ) {
+            $("#image").removeClass("errorInputBox");
+            $( "#imageError").text('').removeClass("ErrorMsg");;
+            
+        } else {
+            $("#image").addClass("errorInputBox");
+            $( "#imageError").text('Image Is Required').addClass("ErrorMsg");
+        }
+
 
         if ( $( "#categorie_name" ).val() ) {
             $( "#categorie_nameError").text('');
             $( "#categorie_nameError" ).removeClass("errorInputBox");
           
-            var myData =  $('#AddCategorieForm').serialize();
-            // alert(data);
+            var form = $('#AddCategorieForm')[0];
+            var formdata = new FormData(form);
             $.ajax({
-                type: 'POST', //THIS NEEDS TO BE GET
-                url: "{{ route('addBusinessCat') }}",
-                // data: {_token: _token, clintName: clintName,age: age,sex: sex,address: address,ref_dr: ref_dr},
-                // data: {_token: _token, myData: myData},
-                data: myData,
-                // dataType: 'json',
-                success: function (response) {
+                    url:"{{ route('addBusinessCat') }}",
+                    method:"POST",
+                    data:formdata,
+                    dataType:'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success:function(response) 
+                {
                     console.log(response);
                     if (response.success) {
                       

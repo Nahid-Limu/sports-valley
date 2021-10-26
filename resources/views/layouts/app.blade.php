@@ -80,7 +80,7 @@
     </div>
 </body>
 
-<footer>
+<footer class="bg-warning">
     <!-- Footer -->
     @include('includes.footer')
     <!-- Footer -->

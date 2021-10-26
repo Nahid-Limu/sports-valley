@@ -20,7 +20,7 @@
 
     <!-- Card Body -->
     <div class="card-body">
-      <table id="ProductDetailsListTable" class="table table-striped table-bordered" style="width:100%; ">
+      <table id="ProductDetailsListTable" class="table table-sm table-bordered table-striped" style="width:100%; ">
         <thead>
             <tr>
                 <th class="text-center">#NO</th>

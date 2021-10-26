@@ -4,7 +4,7 @@
       <div class="col footer-col colorlib-widget">
         <h4>About Sports-Valley</h4>
         <p>
-          SPORTS VALLEY is a Platfrom Where We Provide Sports Axxesories, Sports Good, Sports Wear, Fitness Equipment and Other Sports related product.
+          SPORTS VALLEY is a Platfrom Where We Provide Sports Accessories, Sports Good, Sports Wear, Fitness Equipment and Other Sports related product.
           We Provide our Customers with the best Satisfaction for Sustainable competivtive advantage.
         </p>
         <p>

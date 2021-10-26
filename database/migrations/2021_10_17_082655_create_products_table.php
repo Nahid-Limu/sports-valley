@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->float('buying_price')->nullable();
             $table->float('selling_price')->nullable();
             // $table->text('image')->nullable();
-            $table->string('product_description')->nullable();
+            $table->text('product_description')->nullable();
             $table->timestamps();
         });
     }

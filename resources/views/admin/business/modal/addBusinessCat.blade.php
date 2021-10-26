@@ -24,6 +24,16 @@
                             <span id="categorie_nameError"></span>
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <label class="form-control bg-warning" for="image">Categories Image</label>
+                        </div>
+                        <div class="form-group col-md-7">
+                            {{-- <input type="text" class="form-control" id="categorie_name" name="categorie_name" placeholder="Categorie Name [EX: sports ware] "> --}}
+                            <input type="file" class="form-control" id="image" name="image">
+                            <span id="imageError"></span>
+                        </div>
+                    </div>
                 </form>
             </div>
 

@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p class="bread"><span><a href="index.html">Home</a></span> / <span>Category Details</span></p>
+                    <p class="bread"><span><a href="{{ route('home') }}">Home</a></span> / <span>Category Details</span></p>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                             <div class="featured">
                                 <div class="featured-img featured-img-2" style="background-image: url(  {{ asset('category_product_img').'/'.$cd->image }}  );">
                                     <h2 class="font-weight-bold" style="color: aqua"> {{ $cd->cat_product }} </h2>
-                                    <p><a href="{{ route('productDetails', [base64_encode($cd->id)] ) }}" class="btn btn-primary btn-md">Click To See All</a></p>
+                                    <p><a href="{{ route('allProducts', [base64_encode($cd->id)] ) }}" class="btn btn-primary btn-md">Click To See All</a></p>
                                 </div>
                             </div>
                         </div>
@@ -54,21 +54,14 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col partner-col text-center">
-                    <img src="{{ asset('images/brand-1.jpg') }}" class="img-fluid" alt="Free html4 bootstrap 4 template">
-                </div>
-                <div class="col partner-col text-center">
-                    <img src="{{ asset('images/brand-2.jpg') }}" class="img-fluid" alt="Free html4 bootstrap 4 template">
-                </div>
-                <div class="col partner-col text-center">
-                    <img src="{{ asset('images/brand-3.jpg') }}" class="img-fluid" alt="Free html4 bootstrap 4 template">
-                </div>
-                <div class="col partner-col text-center">
-                    <img src="{{ asset('images/brand-4.jpg') }}" class="img-fluid" alt="Free html4 bootstrap 4 template">
-                </div>
-                <div class="col partner-col text-center">
-                    <img src="{{ asset('images/brand-5.jpg') }}" class="img-fluid" alt="Free html4 bootstrap 4 template">
-                </div>
+                @foreach ($Brands as $Brand)
+                    @if ($Brand->id==99)
+                        @continue
+                    @endif
+                    <div class="col partner-col text-center">
+                        <img src="{{ asset('images').'/'.$Brand->image }}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

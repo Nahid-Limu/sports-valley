@@ -3,11 +3,18 @@
 @section('css')
 <style>
 
-  /* Make the image fully responsive */
-  .carousel-inner img {
-    width: 100%;
-    height: 100%;
-  }
+    /* Make the image fully responsive */
+    .carousel-inner img {
+        width:740px;
+        height:360px;
+    }
+
+    .carousel-indicators li {
+    background-color:aqua;
+    }
+    .carousel-indicators .active {
+        background-color: #fa0000;
+    }
 </style>
 @endsection
 @section('content')
@@ -18,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p class="bread"><span><a href="index.html">Home</a></span> / <span>Product Details</span></p>
+                    <p class="bread"><span><a href="{{ route('home') }}">Home</a></span> / <span>Category Details</span> / <span>All Products</span> / <span>Product Details</span></p>
                 </div>
             </div>
         </div>
@@ -40,19 +47,15 @@
                         
                         <!-- The slideshow -->
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/item-1.jpg" class="img-fluid">
-                              </div>
-                          <div class="carousel-item">
-                            <img src="images/item-2.jpg" class="img-fluid">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="images/item-3.jpg" class="img-fluid">
-                          </div>
+                            @foreach ($images as $key => $image)
+                                <div class="carousel-item {{ ($key == 0 ) ? "active" : "" }} ">
+                                    <img src="{{ asset('product_img').'/'.$image }}" class="img-fluid">
+                                </div>
+                            @endforeach
                         </div>
                         
                         <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev" >
                           <span class="carousel-control-prev-icon"></span>
                         </a>
                         <a class="carousel-control-next" href="#demo" data-slide="next">
@@ -60,23 +63,33 @@
                         </a>
                       </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 bg-warning">
                     <div class="product-desc">
-                        <h3>Boots</h3>
-                        <span><kbd>Brand:</kbd> 555 Tk</span>
-                        <p class="price">
-                            <span><kbd>Price:</kbd> xyz</span>
-                            <span class="">In Stock : 10 piece</span>
-                            {{-- <span>$68.00</span> 
-                            <span class="rate">
-                                <i class="icon-star-full"></i>
-                                <i class="icon-star-full"></i>
-                                <i class="icon-star-full"></i>
-                                <i class="icon-star-full"></i>
-                                <i class="icon-star-half"></i>
-                                (74 Rating)
-                            </span> --}}
-                        </p>
+                        <br>
+                        <table class="table table-sm table-bordered table-light">
+                            <tbody>
+                                <tr>
+                                    <kbd class="d-flex justify-content-center">Details</kbd>
+                                  </tr>
+                              <tr>
+                                <td colspan="2"><kbd>Product Name:</kbd></td>
+                                <td><h5>{{ $product->name }}</h5></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2"><kbd>Brand:</kbd></td>
+                                <td><h5>{{ $product->barnd }}</h5></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2"><kbd>Price:</kbd></td>
+                                <td><h5>{{ $product->selling_price }}Tk</h5></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2"><kbd>In Stock:</kbd></td>
+                                <td><h5>{{ $product->quantity }} piece</h5></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        <br>
                         <p>
                             {{-- <span class="text-info">Brand: xyz</span><br> --}}
                             
@@ -140,7 +153,7 @@
                               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
                                 <li class="nav-item">
-                                  <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Description</a>
+                                  <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Full Description</a>
                                 </li>
                                 {{-- <li class="nav-item">
                                   <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Manufacturer</a>
@@ -152,15 +165,14 @@
 
                               <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane border fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
-                                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                                        <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-                                        <ul>
-                                            <li>The Big Oxmox advised her not to do so</li>
-                                            <li>Because there were thousands of bad Commas</li>
-                                            <li>Wild Question Marks and devious Semikoli</li>
-                                            <li>She packed her seven versalia</li>
-                                            <li>tial into the belt and made herself on the way.</li>
-                                        </ul>
+                                        <div class="col-md-6"> 
+                                            <div class="desc-title">
+                                                {{-- <h4 class="font-weight-bolder">Name: {{ $product->name }} </h4>
+                                                <h5 class="font-weight-bolder">Brand: {{ $product->barnd }}</h5> --}}
+                                                <span class="text-success">Description:</span>
+                                                <p>{{ $product->product_description }}</p>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     {{-- <div class="tab-pane border fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
