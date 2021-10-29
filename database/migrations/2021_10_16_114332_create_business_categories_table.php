@@ -17,6 +17,7 @@ class CreateBusinessCategoriesTable extends Migration
             $table->increments('id');
             $table->string('cat_name')->nullable();
             $table->text('image')->nullable();
+            $table->tinyInteger('show_status')->default('0');
             $table->timestamps();
         });
     }

@@ -14,7 +14,8 @@ class BusinessController extends Controller
 
     public function businessSettings()
     {
-        $Business = BusinessCategory::all(['id','cat_name','image']);
+        $Business = BusinessCategory::all(['id','cat_name','image','show_status']);
+        // dd($Business);
 
         if(request()->ajax())
         {
@@ -30,13 +31,24 @@ class BusinessController extends Controller
                         return $button;   
                     })
 
+                    ->addColumn('show_status', function($data){
+                        if ($data->show_status == 1) {
+                            $button = "<kbd class='bg-success'>Show In Home</kbd>";
+                        }else {
+                            $button = "<kbd class='bg-danger'>Hide In Home</kbd>";
+                        }
+                        
+                        // $button .= '&nbsp;&nbsp;';
+                        return $button;   
+                    })
+
                     ->addColumn('action', function($data){
                         $button = '<div class="d-flex justify-content-center"><button type="button" onclick="editBusinessCategory('.$data->id.')" name="edit" id="'.$data->id.'" class="edit btn btn-sm d-flex justify-content-center" data-toggle="modal" data-target="#EditBusinessCategoryModal" data-placement="top" title="Edit"><i class="fa fa-edit" style="color: aqua"> Edit</i></button>';
                         $button .= '<button type="button" onclick="deleteModal('.$data->id.',\''.$data->cat_name.'\')" name="delete" id="'.$data->id.'" class="delete btn btn-sm" data-toggle="modal" data-target="#DeleteConfirmationModal" data-placement="top" title="Delete"  style="color: red"><i class="fa fa-trash"> Delete</i></button></div>';
                         
                         return $button;
                     })
-                    ->rawColumns(['image','action'])
+                    ->rawColumns(['image','action','show_status'])
                     ->addIndexColumn()
                     ->make(true);
         }
@@ -78,8 +90,16 @@ class BusinessController extends Controller
 
     public function updateBusinessCat(Request $request)
     {
+        // dd($request->all());
         $Business = BusinessCategory::find($request->id);
         $Business->cat_name = $request->cat_name;
+
+        if (is_null($request->eshow_status)) {
+            $Business->show_status = 0;
+        } else {
+            $Business->show_status = 1;
+        }
+        
         $Business->save();
     
         if ($Business->id) {

@@ -15,10 +15,57 @@ class UserController extends Controller
 {
     public function home()
     {
-        $Business = BusinessCategory::get(['id','cat_name','image']);
+        $Business = BusinessCategory::get(['id','cat_name','image','show_status']);
         $Brands = Brand::get(['id','name','image']);
 
-        return view('homePage', compact('Business','Brands'));
+        $showDatas = DB::table('category_details')
+            ->join('business_categories', 'business_categories.id', '=', 'category_details.bc_id')
+            
+                ->select(DB::raw("
+                    category_details.id,
+                    category_details.bc_id,
+                    category_details.cat_product,
+                    business_categories.cat_name,
+                    category_details.image,
+
+                    CASE
+                        WHEN ( (SELECT SUM(products.quantity) FROM products WHERE products.cd_id = category_details.id ) ) > 0 THEN ( (SELECT SUM(products.quantity) FROM products WHERE products.cd_id = category_details.id ) )
+                        ELSE 0
+                    END 
+                    AS quantity
+
+                    ")
+                )
+            ->where('business_categories.show_status', 1)
+            // ->where('business_categories.id', '=', )
+            // ->limit(4)
+            ->inRandomOrder()
+            ->get();
+            // dd($showDatas);
+
+
+        $mainArray = array(); 
+        foreach ($Business as $key => $value) {
+            // dd($value->cat_name);
+            $newArray = array();
+            foreach ($showDatas as $k => $val) {
+                
+                // dd($val->bc_id);
+                if ($value->id == $val->bc_id) {
+                    // array_push( $newArray,  $val );
+                    $newArray[] = $val;
+                    // $mainArray[$value->cat_name] = $val;
+                }
+                continue;
+               
+            }
+            // $mainArray[$value->cat_name] = $newArray;
+            $mainArray[$value->id] = $newArray;
+        }
+
+        // dd($mainArray);
+        return view('homePage', compact('Business','Brands','mainArray'));
+        // return view('homePage', compact('Business','Brands','sports_accessories','sports_wear','mainArray'));
     }
 
 

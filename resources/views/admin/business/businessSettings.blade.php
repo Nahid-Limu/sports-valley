@@ -25,6 +25,7 @@
                 <th class="text-center">#NO</th>
                 <th class="text-center">Business Categories</th>
                 <th class="text-center">Image</th>
+                <th class="text-center">Show Status</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -81,6 +82,10 @@
         {
             data: 'image',
             name: 'image'
+        },
+        {
+            data: 'show_status',
+            name: 'show_status'
         },
         {
             data: 'action',
@@ -155,6 +160,14 @@
                 
                 $('#edit_cat_id').val(response.id);
                 $('#ecat_name').val(response.cat_name);
+                $('#eshow_status').val(response.show_status);
+                
+                if (response.show_status == 1) {
+                  $('#eshow_status').prop('checked', true);
+                }else{
+                  $('#eshow_status').prop('checked', false);
+                }
+                
                 
               }
 

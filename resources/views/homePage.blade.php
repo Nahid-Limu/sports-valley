@@ -37,116 +37,43 @@
 
 		<div class="colorlib-product">
 			<div class="container">
-				<h2 class="text-center text-danger "><ins>Sports Accessories</ins></h2>
-				<div class="row row-pb-md">
-					<div class="w-100"></div>
 
-					<div class="col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/bat.jpg" class="img-fluid fixed-img-size"  alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2 class="text-uppercase"><a href="#">BAT</a></h2>
-								<span class="price"><kbd>Price:</kbd> s555 Tk</span>
-								<span class="price bg-success">In Stock 10 piece</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/racket.jpg" class="img-fluid fixed-img-size"  alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2 class="text-uppercase"><a href="#">racket</a></h2>
-								<span class="price"><kbd>Price:</kbd> s555 Tk</span>
-								<span class="price bg-success">In Stock 10 piece</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/ball.png" class="img-fluid fixed-img-size" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2 class="text-uppercase"><a href="#">ball</a></h2>
-								<span class="price"><kbd>Price:</kbd> s555 Tk</span>
-								<span class="price bg-success">In Stock 10 piece</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/Shuttle-Cock.jpg" class="img-fluid fixed-img-size" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2 class="text-uppercase"><a href="#">Shuttle-Cock</a></h2>
-								<span class="price"><kbd>Price:</kbd> s555 Tk</span>
-								<span class="price bg-success">In Stock 10 piece</span>
-							</div>
-						</div>
-					</div>
-					<span style="margin-left: 20px"><a href="#" class="btn btn-primary btn-sm">See More </a></span>
-				</div>
-
-				<h2 class="text-center text-info"><ins>Sports Wear</ins></h2>
-				<div class="row row-pb-md">
-					<div class="w-100"></div>
-
-					<div class="col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/item-9.jpg" class="img-fluid fixed-img-size" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2 class="text-uppercase"><a href="#">Shoes</a></h2>
-								<span class="price"><kbd>Price:</kbd> 555 Tk</span>
-								<span class="price bg-success">In Stock 10 piece</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="system_img/No-Image.png" class="img-fluid fixed-img-size" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2 class="text-uppercase"><a href="#">TruckShot</a></h2>
-								<span class="price"><kbd>Price:</kbd> 555 Tk</span>
-								<span class="price bg-success">In Stock 10 piece</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/trouser-man.jpg" class="img-fluid fixed-img-size" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2 class="text-uppercase"><a href="#">trouser</a></h2>
-								<span class="price"><kbd>Price:</kbd> 555 Tk</span>
-								<span class="price bg-success">In Stock 10 piece</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/jersey.jpg" class="img-fluid fixed-img-size" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2 class="text-uppercase"><a href="#">jersey</a></h2>
-								<span class="price"><kbd>Price:</kbd> 555 Tk</span>
-								<span class="price bg-success">In Stock 10 piece</span>
-							</div>
-						</div>
-					</div>
-					<span style="margin-left: 20px"><a href="#" class="btn btn-primary btn-sm">See More </a></span>
+				@foreach ($mainArray as $key => $value)
+					@if (count($value))
+					<h2 class="text-center text-info "><kbd class="bg-info text-dark font-italic">{{ $value[0]->cat_name }}</kbd></h2>
 					
-				</div>
+					<div class="row row-pb-md">
+						<div class="w-100"></div>
+						@php $count = 0; @endphp
+						@foreach ($value as $v)
+
+							@if ($count == 4)
+								@break
+							@endif
+						
+							<div class="col-lg-3 mb-4 text-center">
+								<div class="product-entry border">
+									<a href="{{ route('allProducts', [base64_encode($v->id)] ) }}" class="prod-img">
+										<img src="{{ asset('category_product_img').'/'.$v->image }}" class="img-fluid fixed-img-size" alt="Free html5 bootstrap 4 template">
+									</a>
+									<div class="desc">
+										<h2 class="text-uppercase"><a href="#">{{ $v->cat_product }}</a></h2>
+										{{-- <span class="price"><kbd>Price:</kbd> 555 Tk</span> --}}
+										<span class="price bg-success">In Stock {{ $v->quantity }} piece</span>
+									</div>
+								</div>
+							</div>
+							@php $count++; @endphp
+
+						@endforeach
+						<span style="margin-left: 20px"><a href="{{ route('categoryDetails', [base64_encode($value[0]->bc_id)]) }}" class="btn btn-primary btn-sm">See More </a></span>
+					</div>
+					
+					
+					@endif
+					@continue
+					
+				@endforeach
             <hr>
 
 		</div>
