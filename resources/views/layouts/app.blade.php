@@ -66,6 +66,11 @@
     @include('includes.nav')
     <!-- Navbar -->
 
+    <!-- show ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1779671886822617"
+     crossorigin="anonymous"></script>
+    <!-- show ads -->
+
 </head>
 
 <body>

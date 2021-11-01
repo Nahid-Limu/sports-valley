@@ -1,15 +1,16 @@
 <!-- Topbar -->
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
   
-  <a type="button" class="btn btn-info" href="{{ route('home') }}"><i class="fas fa-home"> Back to Home</i></a>
+  {{-- <a type="button" class="btn btn-info" href="{{ route('home') }}"><i class="fas fa-home"> Back to Home</i></a> --}}
   <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
     <i class="fa fa-bars"></i>
   </button>
 
   <!-- Topbar Search -->
-  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+  <form id="autosearch" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+    @csrf
     <div class="input-group">
-      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+      <input onkeyup="productsearch()" type="text" name="search" id="search" class="search_input form-control bg-light border-0 small" placeholder="Search for Products..." aria-label="Search" aria-describedby="basic-addon2">
       <div class="input-group-append">
         <button class="btn btn-primary" type="button">
           <i class="fas fa-search fa-sm"></i>
@@ -17,6 +18,9 @@
       </div>
     </div>
   </form>
+  <p id="noTest" style="text-align: center" hidden></p>
+  <div  id="testlist" style="margin: auto; position: absolute;">
+  </div>
 
   <!-- Topbar Navbar -->
   <ul class="navbar-nav ml-auto">
@@ -65,3 +69,55 @@
     </div>
   </div>
 </div>
+
+<script>
+
+  function productsearch() {
+
+      $('#noTest').prop('hidden', true);
+
+      // var _token = '{{ csrf_token() }}';
+      var search = $("#search").val();
+      var SearchedTestIds = $("#testIds").val();
+      var form = $('#autosearch')[0];
+      var formdata = new FormData(form);
+      // alert(search);
+      if(search != ''){
+
+        $.ajax({
+          url:"{{ route('autoSearch') }}",
+          method:"POST",
+          data:formdata,
+          dataType:'JSON',
+          contentType: false,
+          cache: false,
+          processData: false,
+          success:function(response)
+            {
+                  console.log(response);
+                  // if (response) {
+                    
+                    if (response == 0) {
+                            $('#noTest').prop('hidden', false);
+                            $("#noTest").text('No Data Found or Already Used');
+                        }else{
+                            // $('#noTest').prop('hidden', true);
+                            $("#testlist").fadeIn();
+                            $("#testlist").html(ret);
+                        }
+
+              },error:function(){ 
+                  console.log(response);
+              }
+      });
+          
+      }
+      
+    }
+
+  
+
+  // Price Calculation Function start
+  
+
+</script>

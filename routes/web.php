@@ -60,6 +60,14 @@ Route::group(['middleware'=>'auth'], function () {
     // Route::post('/updateBrand', 'BrandController@updateBrand')->name('updateBrand');
     Route::get('/deleteProduct/{id}', 'ProductController@deleteProduct')->name('deleteProduct');
 
+    //--sales--//
+    Route::get('/sales', 'SalesController@salesView')->name('sales');
+    Route::post('/autoSearch', 'SalesController@autoSearch')->name('autoSearch');
+    //  Route::post('/addProduct', 'ProductController@addProduct')->name('addProduct');
+    // Route::get('/editBrand/{id}', 'BrandController@editBrand')->name('editBrand');
+    // Route::post('/updateBrand', 'BrandController@updateBrand')->name('updateBrand');
+    //  Route::get('/deleteProduct/{id}', 'ProductController@deleteProduct')->name('deleteProduct');
+
 });
 /* Admin route end */
 

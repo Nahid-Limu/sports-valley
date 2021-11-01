@@ -1,6 +1,6 @@
 <nav class="colorlib-nav" role="navigation">
   <div class="top-menu">
-    <div class="container">
+    <div class="container ">
       <div class="row">
         <div class="col-sm-7 col-md-9">
           <div id="colorlib-logo"><a href="{{ route('home') }}">Sports Valley</a></div>
