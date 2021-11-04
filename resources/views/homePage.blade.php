@@ -17,7 +17,8 @@
     <div id="page">
 		
 		{{-- <h2 style="text-align: center;color: gray">ALL Category</h2> --}}
-		<div class="colorlib-intro">
+		{{-- <div class="colorlib-intro"> --}}
+		<div class="">
 			<div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
 				<h2>Business Category</h2>
 			</div>

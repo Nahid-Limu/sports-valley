@@ -1,20 +1,31 @@
-<nav class="colorlib-nav" role="navigation">
-  <div class="top-menu">
+<style>
+  .displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+</style>
+<nav class="colorlib-nav bg-warning" role="navigation">
+  <div class="">
+  {{-- <div class="top-menu"> --}}
     <div class="container ">
-      <div class="row">
-        <div class="col-sm-7 col-md-9">
-          <div id="colorlib-logo"><a href="{{ route('home') }}">Sports Valley</a></div>
-          <span class="text-danger">Let's play The Game</span>
+      <div class=" ">
+        {{-- <div class="col-sm-1 col-md-1">
+          <img src="{{ asset('system_img').'/'.'logo.png' }}" style="height: 100px; width: 50px;;" alt="">
+        </div> --}}
+        <img class="displayed" src="{{ asset('system_img').'/'.'logo.png' }}" style="height: 100px; width: 50px;;" alt="">
+        <div class="">
+          <div style="text-align: center" id="colorlib-logo"><a href="{{ route('home') }}">Sports Valley</a></div>
+          <marquee width="100%" direction="left" ><span style="text-align: center" class="text-danger">Let's play The Game</span></marquee>
         </div>
-        <div class="col-sm-5 col-md-3">
-              <form action="#" class="search-wrap">
-                 <div class="form-group">
-                    <input type="search" class="form-control search" placeholder="Search">
-                    <button class="btn btn-primary submit-search text-center" type="submit"><i class="icon-search"></i></button>
-                 </div>
-              </form>
-           </div>
-         </div>
+        {{-- <div class="col-sm-5 col-md-3">
+          <form action="#" class="search-wrap">
+              <div class="form-group">
+                <input type="search" class="form-control search" placeholder="Search">
+                <button class="btn btn-primary submit-search text-center" type="submit"><i class="icon-search"></i></button>
+              </div>
+          </form>
+        </div> --}}
+      </div>
       <div class="row">
         <div class="col-sm-12 text-left menu-1">
           <ul>

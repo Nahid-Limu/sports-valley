@@ -16,7 +16,7 @@
         @endif
     </title>
 
-    {{-- <link rel="icon" type="image/x-icon" href="{{ asset('img').'/'.'title-logo.png' }}" /> --}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('system_img').'/'.'icon.png' }}" />
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -73,17 +73,21 @@
 
 </head>
 
-<body>
-    <div id="">
+<body style="background-color: #87dfeb">
+    {{-- <div id=""> --}}
 
 
-        <main class="py-4">
+        {{-- <main class="py-4"> --}}
             @yield('content')
 
 
-        </main>
-    </div>
+        {{-- </main> --}}
+    {{-- </div> --}}
 </body>
+{{-- <body>
+    @yield('content')
+    @include('includes.footer')
+</body> --}}
 
 <footer class="bg-warning">
     <!-- Footer -->

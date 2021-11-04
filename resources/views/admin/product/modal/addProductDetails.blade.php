@@ -64,7 +64,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-5">
-                            <label class="form-control bg-warning" for="buying_price">Buying Price</label>
+                            <label class="form-control bg-warning" for="buying_price">Buying Price (1 Piece)</label>
                         </div>
                         <div class="form-group col-md-7">
                             <input type="number" class="form-control" id="buying_price" name="buying_price" min="0" placeholder="Buying Price [EX: 101] ">
@@ -73,7 +73,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-5">
-                            <label class="form-control bg-warning" for="selling_price">Selling Price</label>
+                            <label class="form-control bg-warning" for="selling_price">Selling Price (1 Piece)</label>
                         </div>
                         <div class="form-group col-md-7">
                             <input type="number" class="form-control" id="selling_price" name="selling_price" min="0" placeholder="Selling Price [EX: 101] ">

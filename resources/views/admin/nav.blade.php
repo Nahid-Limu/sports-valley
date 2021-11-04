@@ -97,14 +97,14 @@
                   console.log(response);
                   // if (response) {
                     
-                    if (response == 0) {
-                            $('#noTest').prop('hidden', false);
-                            $("#noTest").text('No Data Found or Already Used');
-                        }else{
-                            // $('#noTest').prop('hidden', true);
-                            $("#testlist").fadeIn();
-                            $("#testlist").html(ret);
-                        }
+                    // if (response == 0) {
+                    //         $('#noTest').prop('hidden', false);
+                    //         $("#noTest").text('No Data Found or Already Used');
+                    //     }else{
+                    //         // $('#noTest').prop('hidden', true);
+                    //         $("#testlist").fadeIn();
+                    //         $("#testlist").html(ret);
+                    //     }
 
               },error:function(){ 
                   console.log(response);

@@ -1,7 +1,8 @@
-<footer id="colorlib-footer" role="contentinfo">
-  <div class="container">
-    <div class="row row-pb-md">
+{{-- <footer id="colorlib-footer" class="bg-warning" role="contentinfo"> --}}
+  <div class="container bg-warning">
+    <div class="row row-pb-md" style="padding: 20px;">
       <div class="col footer-col colorlib-widget">
+        <br>
         <h4>About Sports-Valley</h4>
         <p>
           SPORTS VALLEY is a Platfrom Where We Provide Sports Accessories, Sports Good, Sports Wear, Fitness Equipment and Other Sports related product.
@@ -16,43 +17,9 @@
           </ul>
         </p>
       </div>
-      {{-- <div class="col footer-col colorlib-widget">
-        <h4>Customer Care</h4>
-        <p>
-          <ul class="colorlib-footer-links">
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Returns/Exchange</a></li>
-            <li><a href="#">Gift Voucher</a></li>
-            <li><a href="#">Wishlist</a></li>
-            <li><a href="#">Special</a></li>
-            <li><a href="#">Customer Services</a></li>
-            <li><a href="#">Site maps</a></li>
-          </ul>
-        </p>
-      </div> --}}
-      {{-- <div class="col footer-col colorlib-widget">
-        <h4>Information</h4>
-        <p>
-          <ul class="colorlib-footer-links">
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Delivery Information</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Order Tracking</a></li>
-          </ul>
-        </p>
-      </div> --}}
-
-      {{-- <div class="col footer-col">
-        <h4>News</h4>
-        <ul class="colorlib-footer-links">
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="#">Press</a></li>
-          <li><a href="#">Exhibitions</a></li>
-        </ul>
-      </div> --}}
 
       <div class="float-left">
+        <br>
         <h4>Contact Information</h4>
         <ul class="colorlib-footer-links">
           <li><i class="icon-shop"></i> Cinema Hall Road, <br>    Hazi Ibrahim Market, Panchagarh</li>
@@ -75,4 +42,4 @@
       </div>
     </div>
   </div>
-</footer>
+{{-- </footer> --}}
