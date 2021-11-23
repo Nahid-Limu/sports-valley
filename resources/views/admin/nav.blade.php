@@ -7,7 +7,7 @@
   </button>
 
   <!-- Topbar Search -->
-  <form id="autosearch" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+  {{-- <form id="autosearch" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
     @csrf
     <div class="input-group">
       <input onkeyup="productsearch()" type="text" name="search" id="search" class="search_input form-control bg-light border-0 small" placeholder="Search for Products..." aria-label="Search" aria-describedby="basic-addon2">
@@ -20,7 +20,8 @@
   </form>
   <p id="noTest" style="text-align: center" hidden></p>
   <div  id="testlist" style="margin: auto; position: absolute;">
-  </div>
+    <ul><li id=1>bbs</li></ul>
+  </div> --}}
 
   <!-- Topbar Navbar -->
   <ul class="navbar-nav ml-auto">
@@ -70,7 +71,7 @@
   </div>
 </div>
 
-<script>
+{{-- <script>
 
   function productsearch() {
 
@@ -84,40 +85,43 @@
       // alert(search);
       if(search != ''){
 
-        $.ajax({
-          url:"{{ route('autoSearch') }}",
-          method:"POST",
-          data:formdata,
-          dataType:'JSON',
-          contentType: false,
-          cache: false,
-          processData: false,
-          success:function(response)
-            {
-                  console.log(response);
-                  // if (response) {
-                    
+          $.ajax({
+            url:"{{ route('autoSearch') }}",
+            method:"POST",
+            data:formdata,
+            dataType:'JSON',
+            contentType: false,
+            cache: false,
+            processData: false,
+            success:function(response)
+              {
+                    console.log(response);
+                    // if (response.output !=0) {
+                    //   $("#salesProductlist").append(response.output);
+                    //   // $('#salesProductlist').append( $(response) );
+
+                    // }else{
+                    //   e.preventDefault();
+                    //   $(this).parent().remove();
+                    // }
                     // if (response == 0) {
                     //         $('#noTest').prop('hidden', false);
                     //         $("#noTest").text('No Data Found or Already Used');
                     //     }else{
                     //         // $('#noTest').prop('hidden', true);
                     //         $("#testlist").fadeIn();
-                    //         $("#testlist").html(ret);
+                    //         $("#testlist").html(response);
                     //     }
-
-              },error:function(){ 
-                  console.log(response);
               }
-      });
+            });
           
       }
       
-    }
+  }
 
   
 
   // Price Calculation Function start
   
 
-</script>
+</script> --}}

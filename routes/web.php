@@ -19,6 +19,9 @@ Route::get('/categoryDetails/{cat}', 'UserController@categoryDetails')->name('ca
 Route::get('/allProducts/{id}', 'UserController@allProducts')->name('allProducts');
 Route::get('/productDetails/{id}', 'UserController@productDetails')->name('productDetails');
 
+Route::get('/contact', 'SendEmailController@contact')->name('contact');
+Route::post('/contact/sendmail', 'SendEmailController@sendmail')->name('sendmail');
+
 /* User route end */
 
 

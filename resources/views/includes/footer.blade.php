@@ -1,4 +1,4 @@
-{{-- <footer id="colorlib-footer" class="bg-warning" role="contentinfo"> --}}
+
   <div class="container bg-warning">
     <div class="row row-pb-md" style="padding: 20px;">
       <div class="col footer-col colorlib-widget">
@@ -10,7 +10,7 @@
         </p>
         <p>
           <ul class="colorlib-social-icons">
-            <li><a href="#"><i class="icon-twitter"></i></a></li>
+            <li><a href="#"><i class="icon-twitter icon-style"></i></a></li>
             <li><a href="#"><i class="icon-facebook"></i></a></li>
             <li><a href="#"><i class="icon-linkedin"></i></a></li>
             <li><a href="#"><i class="icon-dribbble"></i></a></li>
@@ -24,8 +24,8 @@
         <ul class="colorlib-footer-links">
           <li><i class="icon-shop"></i> Cinema Hall Road, <br>    Hazi Ibrahim Market, Panchagarh</li>
           <li><i class="icon-phone"></i><a href="tel://01625836160"> +88 01625836160</a></li>
-          <li><i class="icon-mail"></i><a href="mailto:info@yoursite.com"> info@sports-valley.net</a></li>
-          <li><i class="icon-home"></i><a href="#"> sports-valley.net</a></li>
+          <li><i class="icon-mail"></i><a href="mailto:info@yoursite.com"> info@sportsvalley.in</a></li>
+          <li><i class="icon-home"></i><a href="#"> sportsvalley.in</a></li>
         </ul>
       </div>
     </div>
@@ -42,4 +42,3 @@
       </div>
     </div>
   </div>
-{{-- </footer> --}}

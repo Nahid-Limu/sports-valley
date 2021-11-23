@@ -84,14 +84,21 @@ class ProductController extends Controller
             $Product->product_description = $request->product_description;
             $Product->save();
             
-            
+            // $filename = time().'-'.$image->getClientOriginalName();
+            // $path = public_path('images/' . $filename);
+            // Image::make($image->getRealPath())->resize(100, 90)->save($path);
+
             // product images insert start
             $now = Carbon::now('utc')->toDateTimeString();
 
             foreach($request->file('image') as $key => $image)
             {
                 $filename = time().'-'.$request->product_name.$key.'.'.$image->getClientOriginalExtension();
-                $image->move(public_path().'/product_img/', $filename);  
+                // $image->move(public_path().'/product_img/', $filename);  
+
+                $path = public_path('product_img/' . $filename);
+                Image::make($image->getRealPath())->resize(730, 360)->orientate()->save($path);
+
                 $data[] = [
                     'p_id' => $Product->id,
                     'image' => $filename,

@@ -64,7 +64,7 @@ class CategoryController extends Controller
 
                 $filename = time().'-'.$image->getClientOriginalName();
                 $path = public_path('category_product_img/' . $filename);
-                Image::make($image->getRealPath())->resize(500, 300)->save($path);
+                Image::make($image->getRealPath())->resize(200, 200)->save($path);
 
             $CategoryDetails->image =$filename;
             $CategoryDetails->save();
@@ -115,7 +115,7 @@ class CategoryController extends Controller
 
                 $filename = time().'-'.$image->getClientOriginalName();
                 $path = public_path('category_product_img/' . $filename);
-                Image::make($image->getRealPath())->resize(500, 300)->save($path);
+                Image::make($image->getRealPath())->resize(200, 200)->save($path);
 
             $CategoryDetails->image =$filename;
             $CategoryDetails->save();

@@ -64,10 +64,10 @@ class BusinessController extends Controller
             $Business->cat_name = ucwords($request->categorie_name);
 
                 $image = $request->file('image');
-
-                $filename = time().'-'.$image->getClientOriginalName();
+                $filename = time().'-'.$request->categorie_name.'.'.$image->getClientOriginalExtension();
+                // $filename = time().'-'.$image->getClientOriginalName();
                 $path = public_path('system_img/' . $filename);
-                Image::make($image->getRealPath())->resize(500, 500)->save($path);
+                Image::make($image->getRealPath())->resize(300, 300)->save($path);
 
             $Business->image =$filename;
             $Business->save();

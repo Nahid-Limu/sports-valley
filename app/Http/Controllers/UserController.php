@@ -93,11 +93,13 @@ class UserController extends Controller
                 'products.product_description',
                 DB::raw('category_details.cat_product as cat, brands.name as barnd'),
                 // DB::raw("(GROUP_CONCAT(product_images.image SEPARATOR '@')) as `image`") ,
-                DB::raw('product_images.image as image')
+                DB::raw('product_images.image as image'),
+                'products.created_at'
                 )
             ->groupBy('products.id')
             ->where('products.cd_id',$id)
             ->paginate(12);
+            // ->get();
             // dd($products);
 
             $Brands = Brand::get(['id','name','image']);
@@ -124,4 +126,6 @@ class UserController extends Controller
         // dd($images[0]);
         return view('productDetails', compact('product','images'));
     }
+
+    
 }

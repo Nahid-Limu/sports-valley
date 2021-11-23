@@ -1,18 +1,8 @@
 @extends('layouts.app')
 @section('title', 'All Category')
 @section('css')
-<style>
-
-  /* Make the image fully responsive */
-  /* .carousel-inner img {
-    width: 100%;
-    height: 100%;
-  } */
-</style>
 @endsection
 @section('content')
-
-<div id="page">
 
     <div class="breadcrumbs bg-warning">
         <div class="container">
@@ -23,7 +13,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="colorlib-featured">
         <div class="container">
             @if (count($cat_details))
@@ -58,14 +48,16 @@
                     @if ($Brand->id==99)
                         @continue
                     @endif
-                    <div class="col partner-col text-center">
+                    {{-- <div class="col partner-col text-center">
                         <img src="{{ asset('images').'/'.$Brand->image }}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+                    </div> --}}
+                    <div class="col-md-2" style="margin-bottom: 10px;">
+                        <img src="{{ asset('images').'/'.$Brand->image }}" class="img-fluid" style="width: 100px; height: 60px;" >
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
 
-</div>
 
 @endsection

@@ -63,7 +63,7 @@ class BrandController extends Controller
 
                 $filename = time().'-'.$image->getClientOriginalName();
                 $path = public_path('images/' . $filename);
-                Image::make($image->getRealPath())->resize(300, 200)->save($path);
+                Image::make($image->getRealPath())->resize(100, 60)->save($path);
 
             $Brand->image =$filename;
             $Brand->save();
@@ -108,7 +108,7 @@ class BrandController extends Controller
 
                 $filename = time().'-'.$image->getClientOriginalName();
                 $path = public_path('images/' . $filename);
-                Image::make($image->getRealPath())->resize(300, 200)->save($path);
+                Image::make($image->getRealPath())->resize(100, 60)->save($path);
 
             $Brand->image =$filename;
             $Brand->save();

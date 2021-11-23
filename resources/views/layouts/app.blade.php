@@ -63,7 +63,7 @@
 
 
     <!-- Navbar -->
-    @include('includes.nav')
+    {{-- @include('includes.nav') --}}
     <!-- Navbar -->
 
     <!-- show ads -->
@@ -74,27 +74,23 @@
 </head>
 
 <body style="background-color: #87dfeb">
-    {{-- <div id=""> --}}
+    <div class="container-fluid">
 
+        <header>
+            @include('includes.nav')
+        </header>
 
-        {{-- <main class="py-4"> --}}
+        <div id="main">
             @yield('content')
+        </div>
 
+        <footer>
+            @include('includes.footer')
+        </footer>
+        
+    </div>
 
-        {{-- </main> --}}
-    {{-- </div> --}}
 </body>
-{{-- <body>
-    @yield('content')
-    @include('includes.footer')
-</body> --}}
-
-<footer class="bg-warning">
-    <!-- Footer -->
-    @include('includes.footer')
-    <!-- Footer -->
-</footer>
-
 
 
 <!-- jQuery -->

@@ -2,9 +2,15 @@
   .displayed {
     display: block;
     margin-left: auto;
-    margin-right: auto }
+    margin-right: auto 
+    }
+    
+    ul li a:hover {
+	background-color: yellow;
+  text-decoration: none;
+}
 </style>
-<nav class="colorlib-nav bg-warning" role="navigation">
+<nav class="colorlib-nav bg-info" role="navigation">
   <div class="">
   {{-- <div class="top-menu"> --}}
     <div class="container ">
@@ -47,11 +53,12 @@
               <li><a href="{{ route('categoryDetails', [base64_encode($b->id)]) }}">{{ $b->cat_name }}</a></li>   
             @endforeach
             <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="{{ route('contact') }}">Contact Us</a></li>
             <li class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
           </ul>
         </div>
       </div>
+      <br>
     </div>
   </div>
   {{-- <div class="sale">
