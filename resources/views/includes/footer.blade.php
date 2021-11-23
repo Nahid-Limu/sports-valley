@@ -10,8 +10,8 @@
         </p>
         <p>
           <ul class="colorlib-social-icons">
-            <li><a href="#"><i class="icon-twitter icon-style"></i></a></li>
-            <li><a href="#"><i class="icon-facebook"></i></a></li>
+            <li><a href="#"><i class="icon-twitter"></i></a></li>
+            <li><a href="https://www.facebook.com/Sports-Valley-105778668496226/" target="_blank"><i class="icon-facebook"></i></a></li>
             <li><a href="#"><i class="icon-linkedin"></i></a></li>
             <li><a href="#"><i class="icon-dribbble"></i></a></li>
           </ul>

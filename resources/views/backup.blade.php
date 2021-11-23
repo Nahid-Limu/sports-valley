@@ -1,76 +1,86 @@
-@extends('layouts.app')
-@section('title', 'All Category')
-@section('css')
 <style>
-
-  /* Make the image fully responsive */
-  /* .carousel-inner img {
-    width: 100%;
-    height: 100%;
-  } */
-</style>
-@endsection
-@section('content')
-<div class="contenton">
-    <div id="page">
-
-        <div class="breadcrumbs bg-warning">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <p class="bread"><span><a href="{{ route('home') }}">Home</a></span> / <span>Category Details</span></p>
-                    </div>
+    .displayed {
+      display: block;
+      margin-left: auto;
+      margin-right: auto 
+      }
+      
+      ul li a:hover {
+      background-color: yellow;
+    text-decoration: none;
+  }
+  </style>
+  <nav class="colorlib-nav bg-info" role="navigation">
+    <div class="">
+    {{-- <div class="top-menu"> --}}
+      <div class="container ">
+        <div class=" ">
+          {{-- <div class="col-sm-1 col-md-1">
+            <img src="{{ asset('system_img').'/'.'logo.png' }}" style="height: 100px; width: 50px;;" alt="">
+          </div> --}}
+          <img class="displayed" src="{{ asset('system_img').'/'.'logo.png' }}" style="height: 100px; width: 50px;;" alt="">
+          <div class="">
+            <div style="text-align: center" id="colorlib-logo"><a href="{{ route('home') }}">Sports Valley</a></div>
+            <marquee width="100%" direction="left" ><span style="text-align: center" class="text-danger">Let's play The Game</span></marquee>
+          </div>
+          {{-- <div class="col-sm-5 col-md-3">
+            <form action="#" class="search-wrap">
+                <div class="form-group">
+                  <input type="search" class="form-control search" placeholder="Search">
+                  <button class="btn btn-primary submit-search text-center" type="submit"><i class="icon-search"></i></button>
                 </div>
-            </div>
+            </form>
+          </div> --}}
         </div>
-        
-        <div class="colorlib-featured">
-            <div class="container">
-                @if (count($cat_details))
-                    <div class="row">
-                        @foreach ($cat_details as $cd)
-                            <div class="col-sm-4 text-center">
-                                <div class="featured">
-                                    <div class="featured-img featured-img-2" style="background-image: url(  {{ asset('category_product_img').'/'.$cd->image }}  );">
-                                        <h2 class="font-weight-bold" style="color: aqua"> {{ $cd->cat_product }} </h2>
-                                        <p><a href="{{ route('allProducts', [base64_encode($cd->id)] ) }}" class="btn btn-primary btn-md">Click To See All</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @else
-                    <h1 class="text-danger font-italic d-flex justify-content-center">Sorry No Product available</h1>
-                @endif
-                <span class="d-flex justify-content-center">{{ $cat_details->links() }}</span>
-            </div>
+        <div class="row">
+          <div class="col-sm-12 text-left menu-1">
+            <ul>
+              <li class="active"><a href="{{ route('home') }}">Home</a></li>
+              {{-- <li class="has-dropdown">
+                <a href="men.html">Men</a>
+                <ul class="dropdown">
+                  <li><a href="product-detail.html">Product Detail</a></li>
+                  <li><a href="cart.html">Shopping Cart</a></li>
+                  <li><a href="checkout.html">Checkout</a></li>
+                  <li><a href="order-complete.html">Order Complete</a></li>
+                  <li><a href="add-to-wishlist.html">Wishlist</a></li>
+                </ul>
+              </li> --}}
+              @php
+                  $Business= App\BusinessCategory::get();
+              @endphp
+              @foreach ($Business as $b)
+                <li><a href="{{ route('categoryDetails', [base64_encode($b->id)]) }}">{{ $b->cat_name }}</a></li>   
+              @endforeach
+              <li><a href="{{ route('about') }}">About</a></li>
+              <li><a href="{{ route('contact') }}">Contact Us</a></li>
+              <li class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
+            </ul>
+          </div>
         </div>
-    
-        <div class="colorlib-partner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
-                        <h2>Brandes We Provide</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    @foreach ($Brands as $Brand)
-                        @if ($Brand->id==99)
-                            @continue
-                        @endif
-                        {{-- <div class="col partner-col text-center">
-                            <img src="{{ asset('images').'/'.$Brand->image }}" class="img-fluid" alt="Free html4 bootstrap 4 template">
-                        </div> --}}
-                        <div class="col-md-2" style="margin-bottom: 10px;">
-                            <img src="{{ asset('images').'/'.$Brand->image }}" class="img-fluid" style="width: 100px; height: 60px;" >
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    
+        <br>
+      </div>
     </div>
-</div>
-
-
-@endsection
+    {{-- <div class="sale">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 text-center">
+            <div class="row">
+              <div class="owl-carousel2">
+                <div class="item">
+                  <div class="col">
+                    <h3><a href="#">25% off (Almost) Everything! Use Code: Summer Sale</a></h3>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="col">
+                    <h3><a href="#">Our biggest sale yet 50% off all summer shoes</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> --}}
+  </nav>

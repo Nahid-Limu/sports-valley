@@ -6,7 +6,7 @@
     }
     
     ul li a:hover {
-	background-color: yellow;
+    background-color: yellow;
   text-decoration: none;
 }
 </style>
@@ -52,7 +52,7 @@
             @foreach ($Business as $b)
               <li><a href="{{ route('categoryDetails', [base64_encode($b->id)]) }}">{{ $b->cat_name }}</a></li>   
             @endforeach
-            <li><a href="about.html">About</a></li>
+            <li><a href="{{ route('about') }}">About</a></li>
             <li><a href="{{ route('contact') }}">Contact Us</a></li>
             <li class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
           </ul>

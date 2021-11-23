@@ -127,5 +127,8 @@ class UserController extends Controller
         return view('productDetails', compact('product','images'));
     }
 
-    
+    public function about()
+    {
+        return view('about');
+    }
 }

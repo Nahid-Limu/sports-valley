@@ -74,22 +74,23 @@
 </head>
 
 <body style="background-color: #87dfeb">
-    <div class="container-fluid">
+    <div id="page">
+        <div class="container-fluid">
 
-        <header>
-            @include('includes.nav')
-        </header>
+            <header>
+                @include('includes.nav')
+            </header>
 
-        <div id="main">
-            @yield('content')
+            <div id="main">
+                @yield('content')
+            </div>
+
+            <footer>
+                @include('includes.footer')
+            </footer>
+            
         </div>
-
-        <footer>
-            @include('includes.footer')
-        </footer>
-        
     </div>
-
 </body>
 
 
