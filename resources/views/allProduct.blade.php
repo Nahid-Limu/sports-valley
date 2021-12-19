@@ -43,6 +43,7 @@
                                 </a>
                                 <div class="desc">
                                     <h2 class="text-uppercase"><a href="{{ route('productDetails', [base64_encode($product->id)] ) }}">{{ $product->name }}</a></h2>
+                                    <small><kbd>CODE: {{ $product->code }}</kbd></small>
                                     <span class="price"><kbd>Brand:</kbd> {{ $product->barnd }}</span>
                                     <span class="price bg-success">In Stock {{ $product->quantity }} piece</span>
                                     <small class="text-dark">Upload {{ \Carbon\Carbon::parse($product->created_at)->diffForHumans() }} </small>

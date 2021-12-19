@@ -23,7 +23,7 @@ class ProductController extends Controller
             ->join('category_details', 'products.cd_id', '=', 'category_details.id')
             ->join('brands', 'products.brand_id', '=', 'brands.id')
             ->join('product_images', 'products.id', '=', 'product_images.p_id')
-            ->select('products.id','products.name','products.quantity',
+            ->select('products.id','products.code','products.name','products.quantity',
                 'products.buying_price','products.selling_price',
                 'products.product_description',
                 DB::raw('category_details.cat_product as cat, brands.name as barnd'),
@@ -74,7 +74,11 @@ class ProductController extends Controller
 
         if ($request->hasFile('image')) {
 
+            $latestProduct = Product::orderBy('created_at','DESC')->first();
+            $pCode = (empty($latestProduct)) ? '#'.str_pad(0 + 1, 8, "0", STR_PAD_LEFT) : '#'.str_pad($latestProduct->id + 1, 8, "0", STR_PAD_LEFT) ;
+
             $Product = new Product;
+            $Product->code = $pCode;
             $Product->cd_id = $request->cd_name;
             $Product->brand_id = $request->brand_name;
             $Product->name = $request->product_name;

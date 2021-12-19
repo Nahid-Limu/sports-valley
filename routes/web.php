@@ -23,6 +23,11 @@ Route::get('/about', 'UserController@about')->name('about');
 Route::get('/contact', 'SendEmailController@contact')->name('contact');
 Route::post('/contact/sendmail', 'SendEmailController@sendmail')->name('sendmail');
 
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    // return what you want
+});
+
 /* User route end */
 
 
@@ -71,7 +76,7 @@ Route::group(['middleware'=>'auth'], function () {
     // Route::get('/editBrand/{id}', 'BrandController@editBrand')->name('editBrand');
     // Route::post('/updateBrand', 'BrandController@updateBrand')->name('updateBrand');
     //  Route::get('/deleteProduct/{id}', 'ProductController@deleteProduct')->name('deleteProduct');
-
+    Route::get('/test', 'SalesController@test')->name('test');
 });
 /* Admin route end */
 

@@ -88,7 +88,7 @@ class UserController extends Controller
             ->join('category_details', 'products.cd_id', '=', 'category_details.id')
             ->join('brands', 'products.brand_id', '=', 'brands.id')
             ->join('product_images', 'products.id', '=', 'product_images.p_id')
-            ->select('products.id','products.name','products.quantity',
+            ->select('products.id','products.code','products.name','products.quantity',
                 'products.buying_price','products.selling_price',
                 'products.product_description',
                 DB::raw('category_details.cat_product as cat, brands.name as barnd'),
@@ -113,7 +113,7 @@ class UserController extends Controller
             ->join('category_details', 'products.cd_id', '=', 'category_details.id')
             ->join('brands', 'products.brand_id', '=', 'brands.id')
             ->join('product_images', 'products.id', '=', 'product_images.p_id')
-            ->select('products.id','products.name','products.quantity',
+            ->select('products.id','products.code','products.name','products.quantity',
                 'products.buying_price','products.selling_price',
                 'products.product_description',
                 DB::raw('category_details.cat_product as cat, brands.name as barnd'),

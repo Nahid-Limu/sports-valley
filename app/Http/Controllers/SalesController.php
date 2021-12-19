@@ -18,8 +18,70 @@ class SalesController extends Controller
 {
     public function salesView()
     {
+        $products = DB::table('products')
+            ->join('category_details', 'products.cd_id', '=', 'category_details.id')
+            ->join('brands', 'products.brand_id', '=', 'brands.id')
+            ->join('product_images', 'products.id', '=', 'product_images.p_id')
+            ->select('products.id','products.code','products.name','products.quantity',
+                
+                DB::raw('brands.name as barnd'),
+                'products.buying_price','products.selling_price',
+                DB::raw("(GROUP_CONCAT(product_images.image SEPARATOR '@')) as `image`") )
+            ->groupBy('products.id')
+            ->get();
+            // $img = explode("@",$products[0]->image);
+            // dd($img[0]);
+        // $CategoryDetails = CategoryDetails::all(['id','cat_product','image']);
+
+        // if(request()->ajax())
+        // {
+        //     return datatables()->of($products)
+
+
+        //             ->addColumn('image', function($data){
+
+        //                     $img = explode("@",$data->image);
+        //                     $button = " <div class='text-center'>";
+        //                         foreach ($img as $key => $value) {
+                                    
+        //                             $url= asset('product_img').'/'.$value;
+        //                             $button .= " <img src='$url' style='widows: 40px; height: 40px; margin-bottom: 10px;'> </br> ";
+        //                         }
+        //                     $button .= "</div>";
+                        
+        //                 // $button .= '&nbsp;&nbsp;';
+        //                 return $button;   
+        //             })
+                    
+        //             ->addColumn('action', function($data){
+        //                 $button = '<div class="d-flex justify-content-center"><button type="button" onclick="editBusinessCategory('.$data->id.')" name="edit" id="'.$data->id.'" class="edit btn btn-sm d-flex justify-content-center" data-toggle="modal" data-target="#EditBusinessCategoryModal" data-placement="top" title="Edit"><i class="fa fa-edit" style="color: aqua"> Edit</i></button>';
+        //                 $button .= '<button type="button" onclick="deleteModal('.$data->id.',\''.$data->name.'\')" name="delete" id="'.$data->id.'" class="delete btn btn-sm" data-toggle="modal" data-target="#DeleteConfirmationModal" data-placement="top" title="Delete"  style="color: red"><i class="fa fa-trash"> Delete</i></button></div>';
+                        
+        //                 return $button;
+        //             })
+        //             ->rawColumns(['image','action'])
+        //             ->addIndexColumn()
+        //             ->make(true);
+        // }
+        // dd( $products);
+
+        // $no = $request->i - 1;
+        // $test = Test::find($request->data);
+        // $no;
+        $output = '';
+        foreach ($products as $key => $product) {
+            $output .= '<tr id=test'.$product->id.'>
        
-        return view('admin.sales.salesView');
+            <td>'.$product->code.'</td>
+            <td>'.$product->name.'</td>
+            <td class ="price">'.$product->quantity.'</td>
+            <td class ="testaction" onclick="removeRow(\'test\'+'.$product->id.')"><i class="fa fa-remove" style="font-size:24px; color:red;"></i></td>';
+            
+            $output .='</tr>';
+        }
+
+    //    dd($output);
+        return view('admin.sales.salesView', compact('output','products'));
     }
 
     public function autoSearch(Request $request)
@@ -41,7 +103,7 @@ class SalesController extends Controller
                         // DB::raw("(GROUP_CONCAT(product_images.image SEPARATOR '@')) as `image`"),
                         DB::raw('product_images.image as image') )
                     ->groupBy('products.id')
-                    ->where('products.name','LIKE',"%{$search}%")
+                    ->where('products.code','LIKE',"%{$search}%")
                     ->get();
                     // dd($products);                    
 
@@ -92,5 +154,20 @@ class SalesController extends Controller
                     }
         }
         
+    }
+
+    public function test()
+    {
+        $latestProduct = Product::all();
+        // $pCode = (empty($latestProduct)) ? '#'.str_pad(0 + 1, 8, "0", STR_PAD_LEFT) : '#'.str_pad($latestProduct->id + 1, 8, "0", STR_PAD_LEFT) ;
+        foreach ($latestProduct as $key => $value) {
+            $pCode = (empty($value)) ? '#'.str_pad(0 + 1, 8, "0", STR_PAD_LEFT) : '#'.str_pad($value->id + 0, 8, "0", STR_PAD_LEFT) ;
+            // dd($value);
+            $product = Product::find($value->id);
+            $product->code = $pCode; 
+            $product->save();
+            // dd($product);
+        }
+         dd(121);
     }
 }

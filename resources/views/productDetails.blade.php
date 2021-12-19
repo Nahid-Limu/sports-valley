@@ -76,6 +76,10 @@
                                 <td><h5>{{ $product->name }}</h5></td>
                               </tr>
                               <tr>
+                                <td colspan="2"><kbd>Code:</kbd></td>
+                                <td><h5>{{ $product->code }}</h5></td>
+                              </tr>
+                              <tr>
                                 <td colspan="2"><kbd>Brand:</kbd></td>
                                 <td><h5>{{ $product->barnd }}</h5></td>
                               </tr>

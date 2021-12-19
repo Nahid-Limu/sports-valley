@@ -20,23 +20,24 @@
 
     <!-- Card Body -->
     <div class="card-body">
-      <table id="ProductDetailsListTable" class="table table-sm table-bordered table-striped" style="width:100%; ">
-        <thead>
-            <tr>
-                <th class="text-center">#NO</th>
-                <th class="text-center">Category</th>
-                <th class="text-center">Brand</th>
-                <th class="text-center">Product Name</th>
-                <th class="text-center">Quantity</th>
-                <th class="text-center">Buying Price</th>
-                <th class="text-center">Selling Price</th>
-                <th class="text-center">Images</th>
-                <th class="text-center">Description</th>
-                <th class="text-center">Action</th>
-            </tr>
-        </thead>
+        <table id="ProductDetailsListTable" class="table table-sm table-bordered table-striped" style="width:100%; ">
+            <thead>
+                <tr>
+                    <th class="text-center">#NO</th>
+                    <th class="text-center">Code</th>
+                    <th class="text-center">Category</th>
+                    <th class="text-center">Brand</th>
+                    <th class="text-center">Product Name</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Buying Price</th>
+                    <th class="text-center">Selling Price</th>
+                    <th class="text-center">Images</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
 
-    </table>
+        </table>
     </div>
   </div>
 </div>
@@ -80,6 +81,10 @@
         { 
             data: 'DT_RowIndex', 
             name: 'DT_RowIndex' 
+        },
+        {
+            data: 'code',
+            name: 'code'
         },
         {
             data: 'cat',

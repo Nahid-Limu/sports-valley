@@ -136,7 +136,7 @@
     <div class="row" >
         <div class="col-md-2"></div>
 
-        <div class="col-md-8">
+        {{-- <div class="col-md-8">
             <div class="container h-100">
                 <form id="autosearch" method="post" class="table ">
                   @csrf
@@ -152,12 +152,12 @@
                   
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="col-md-2"></div>
     </div>
 
-    <div class="table-responsive table-hover" style="overflow: auto; height: 300px;">
+    {{-- <div class="table-responsive table-hover" style="overflow: auto; height: 300px;">
       <table class="table" id="tableData">
           <thead style="background: aqua; text-align: center; font-style: bold;">
           <tr>
@@ -201,7 +201,57 @@
           <button disabled="disabled" class="btn btn-primary" type="submit" id="con" onclick="userRegModal()"><i class="fas fa-sign-out-alt"></i> Confirm</button>
           <button disabled="disabled" type="button" class="btn btn-danger" id="dis" style="margin-left: 10px;">Discard</button>
       </div>
-  </div>
+  </div> --}}
+
+  <div class="card-body">
+    <table id="ProductDetailsListTable" class="table table-sm table-bordered table-striped" style="width:100%; ">
+        <thead>
+            <tr>
+                
+                {{-- <th class="text-center">#NO</th> --}}
+                <th class="text-center">Code</th>
+                <th class="text-center">Product Name</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-center">Brand</th>
+                <th class="text-center">Price(BUY)</th>
+                <th class="text-center">Price(SALE)</th>
+                <th class="text-center">Images</th>
+                <th class="text-center">Action</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            {{-- {!! $output !!} --}}
+            @foreach ($products as $product)
+            <tr>
+                <td>{{ $product->code }}</td>
+                <td>{{ $product->name }}</td>
+                <td>{{ $product->quantity }}</td>
+                <td>{{ $product->barnd }}</td>
+                <td>{{ $product->buying_price }}</td>
+                <td>{{ $product->selling_price }}</td>
+               
+                 <td>
+                    @php
+                        $img = explode("@",$product->image);
+                    @endphp
+                    @foreach ($img as $key => $item)
+                    <img src="{{ asset('product_img').'/'.$img[$key] }}" style='widows: 40px; height: 40px; margin-bottom: 10px;'><br>
+                    @endforeach
+                     
+                </td>
+                <td>
+                    <div class="d-flex justify-content-center"><button type="button" onclick="buyNow( {{ $product->id }})" name="edit" id="'.$data->id.'" class="edit btn btn-sm d-flex justify-content-center" data-toggle="modal" data-target="#EditBusinessCategoryModal" data-placement="top" title="Edit"><i class="fa fa-edit" style="color: aqua"> Edit</i></button>
+                    <button type="button" onclick="deleteModal('.$data->id.',\''.$data->name.'\')" name="delete" id="'.$data->id.'" class="delete btn btn-sm" data-toggle="modal" data-target="#DeleteConfirmationModal" data-placement="top" title="Delete"  style="color: red"><i class="fa fa-trash"> Delete</i></button></div>
+                </td>
+                
+            </tr>
+            @endforeach
+            
+        </tbody>
+
+    </table>
+</div>
 </div>
 
   <!-- Content Row -->
@@ -271,6 +321,15 @@
   
 
   // Price Calculation Function start
+
+  $(document).ready(function() {
+    $('#ProductDetailsListTable').DataTable();
+} );
+
+
+function buyNow(id) {
+     alert(id);
+    }
   
 
 </script>
