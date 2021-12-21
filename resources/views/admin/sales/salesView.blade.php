@@ -116,155 +116,69 @@
 @endsection
 
 @section('content')
-
-
-
-<!-- Begin Page Content -->
-<div class="container-fluid">
-
-  <!-- Content Row -->
-  <div class="container">
-           
-    {{-- <div class="row row-pb-md" id="salesProductlist">
-        <div class="w-100"></div>
+<div class="col-xl-12 col-lg-8">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-list"> Product For Sales LIST</i></h6>
+        <strong id="success_message" class="text-success"></strong>
         
-        
-        
-    </div>
-    <span class="d-flex justify-content-center"></span> --}}
-
-    <div class="row" >
-        <div class="col-md-2"></div>
-
-        {{-- <div class="col-md-8">
-            <div class="container h-100">
-                <form id="autosearch" method="post" class="table ">
-                  @csrf
-                    <div class="d-flex justify-content-center h-100">
-                        <div class="searchbar">
-                        <input onkeyup="productsearch()" class="search_input" type="text" name="search" id="search" placeholder="Search Product Here....">
-                        <a href="#" class="search_icon"><i class="fa fa-search-plus"></i></a>
-                        </div>
-                    </div>
-                </form>
-                <p id="noTest" style="text-align: center" hidden></p>
-                <div  id="testlist" style="margin: auto; position: absolute;">
-                  
-                </div>
-            </div>
-        </div> --}}
-
-        <div class="col-md-2"></div>
-    </div>
-
-    {{-- <div class="table-responsive table-hover" style="overflow: auto; height: 300px;">
-      <table class="table" id="tableData">
-          <thead style="background: aqua; text-align: center; font-style: bold;">
-          <tr>
-              <th>No</th>
-              <th>Test Name</th>
-              <th>Test Code</th>
-              <th>Test Price</th>
-              <th class="testaction">Action</th>
-              
-          </tr>
-          </thead>
-
-          <tbody  id="testTable" style="text-align: center; font-style: bold;">         
-          </tbody>
-
-          <tbody id="rseTbody" hidden style="background:steelblue; text-align: center; font-style: bold;">
-              <tr >
-                  <td>&nbsp</td>
-                  <td><b> Sub Total</b></td>
-                  <td><b>:</b></td>
-                  <td ><b id="result" ><b></b></td>
-                  <td class ="testaction"></td>
-              </tr>
-              <tr >
-                  <td>&nbsp</td>
-                  <td><b> Discount</b></td>
-                  <td><b>:</b></td>
-                  <td ><b id="discountAmount" ><b></b></td>
-                  <td class ="testaction"><input type="hidden" class="form-control w-50 p-3 float-right" placeholder="Discount Amount" onkeyup="calculateSum()" id="discount" name="discount" value="" disabled="disabled"> </td>
-              </tr>
-              <tr >
-                  <td>&nbsp</td>
-                  <td><b> Total</b></td>
-                  <td><b>:</b></td>
-                  <td ><b id="discountResult" ><b></b></td>
-                  <td class ="testaction"><input type="hidden" class="form-control w-50 p-3 float-right" > </td>
-              </tr>
-          </tbody> 
-      </table>
-      <div style=" display: flex; justify-content: center;">
-          <button disabled="disabled" class="btn btn-primary" type="submit" id="con" onclick="userRegModal()"><i class="fas fa-sign-out-alt"></i> Confirm</button>
-          <button disabled="disabled" type="button" class="btn btn-danger" id="dis" style="margin-left: 10px;">Discard</button>
+        <div class="dropdown no-arrow">
+          <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewBuyProductsModal"><i class="fas fa-plus fa-fw mr-2 text-gray-400"></i>View Sale Items</button>
+        </div>
       </div>
-  </div> --}}
-
-  <div class="card-body">
-    <table id="ProductDetailsListTable" class="table table-sm table-bordered table-striped" style="width:100%; ">
-        <thead>
-            <tr>
-                
-                {{-- <th class="text-center">#NO</th> --}}
-                <th class="text-center">Code</th>
-                <th class="text-center">Product Name</th>
-                <th class="text-center">Quantity</th>
-                <th class="text-center">Brand</th>
-                <th class="text-center">Price(BUY)</th>
-                <th class="text-center">Price(SALE)</th>
-                <th class="text-center">Images</th>
-                <th class="text-center">Action</th>
-               
-            </tr>
-        </thead>
-        <tbody>
+  
+      <!-- Card Body -->
+      <div class="card-body">
+        <table id="ProductDetailsListTable" class="table table-sm table-bordered table-striped" style="width:100%; ">
+            <thead>
+                <tr>
+                    <th class="text-center">Code</th>
+                    <th class="text-center">Product Name</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Brand</th>
+                    <th class="text-center">Price(BUY)</th>
+                    <th class="text-center">Price(SALE)</th>
+                    <th class="text-center">Images</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
             {{-- {!! $output !!} --}}
-            @foreach ($products as $product)
-            <tr>
-                <td>{{ $product->code }}</td>
-                <td>{{ $product->name }}</td>
-                <td>{{ $product->quantity }}</td>
-                <td>{{ $product->barnd }}</td>
-                <td>{{ $product->buying_price }}</td>
-                <td>{{ $product->selling_price }}</td>
-               
-                 <td>
-                    @php
-                        $img = explode("@",$product->image);
-                    @endphp
-                    @foreach ($img as $key => $item)
-                    <img src="{{ asset('product_img').'/'.$img[$key] }}" style='widows: 40px; height: 40px; margin-bottom: 10px;'><br>
-                    @endforeach
-                     
-                </td>
-                <td>
-                    <div class="d-flex justify-content-center"><button type="button" onclick="buyNow( {{ $product->id }})" name="edit" id="'.$data->id.'" class="edit btn btn-sm d-flex justify-content-center" data-toggle="modal" data-target="#EditBusinessCategoryModal" data-placement="top" title="Edit"><i class="fa fa-edit" style="color: aqua"> Edit</i></button>
-                    <button type="button" onclick="deleteModal('.$data->id.',\''.$data->name.'\')" name="delete" id="'.$data->id.'" class="delete btn btn-sm" data-toggle="modal" data-target="#DeleteConfirmationModal" data-placement="top" title="Delete"  style="color: red"><i class="fa fa-trash"> Delete</i></button></div>
-                </td>
+                @foreach ($products as $product)
+                <tr>
+                    <td>{{ $product->code }}</td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->quantity }}</td>
+                    <td>{{ $product->barnd }}</td>
+                    <td>{{ $product->buying_price }}</td>
+                    <td>{{ $product->selling_price }}</td>
                 
-            </tr>
-            @endforeach
+                    <td>
+                        @php
+                            $img = explode("@",$product->image);
+                        @endphp
+                        @foreach ($img as $key => $item)
+                        <img src="{{ asset('product_img').'/'.$img[$key] }}" style='widows: 40px; height: 40px; margin-bottom: 10px;'><br>
+                        @endforeach
+                        
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-center"><button type="button" onclick="buyNow( {{ $product->id }})" name="edit" id="'.$data->id.'" class="edit btn btn-sm d-flex justify-content-center" data-toggle="modal" data-target="#buyNowModal" data-placement="top" title="Edit"><i class="fa fa-edit" style="color: aqua"> BUY</i></button>
+                        <button type="button" onclick="deleteModal('.$data->id.',\''.$data->name.'\')" name="delete" id="'.$data->id.'" class="delete btn btn-sm" data-toggle="modal" data-target="#DeleteConfirmationModal" data-placement="top" title="Delete"  style="color: red"><i class="fa fa-trash"> Delete</i></button></div>
+                    </td>
+                    
+                </tr>
+                @endforeach
             
         </tbody>
 
-    </table>
-</div>
-</div>
-
-  <!-- Content Row -->
-
-  <!-- Content Row  details-->
-  <div class="row">
-
-
+        </table>
+    </div>
+    </div>
   </div>
-
-  
-
-</div>
+@include('admin.sales.modal.buyNowModal')
+@include('admin.sales.modal.viewBuyProductsModal')
 
 @endsection
 
@@ -328,8 +242,177 @@
 
 
 function buyNow(id) {
-     alert(id);
+    $('#buying_quantity').val(0);
+      $('#cost').val(0);
+     $.ajax({
+          type: 'GET',
+          url: "{{url('sealProductDetails')}}"+"/"+id,
+          success: function (response) {
+              console.log(response);
+              if (response) {
+                $('#id').val(response.id);
+                $('#image').attr("src", "product_img"+"/"+response.image);
+                $('#code').val(response.code);
+                $('#name').val(response.name);
+                $('#quantity').val(response.quantity+" Piece");
+                $('#sale_price').val(response.selling_price+" TK");
+                $('#buy_price').val(response.buying_price+" TK");
+                
+                $('#buying_quantity').prop('max',response.quantity);
+                
+                // if (response.show_status == 1) {
+                //   $('#eshow_status').prop('checked', true);
+                // }else{
+                //   $('#eshow_status').prop('checked', false);
+                // }
+                // alert(id);
+               
+                
+              }
+
+          },error:function(){ 
+              console.log(response);
+          }
+      });
+}
+
+
+$("#buying_quantity").on('change', function(){
+  var sale_price=$('#sale_price').val();  
+  sale_price=parseInt(sale_price);
+  $('#cost').val(sale_price* $("#buying_quantity").val());
+
+  var buy_price=$('#buy_price').val();  
+  buy_price=parseInt(buy_price);
+  $('#totalBuyPrice').val(buy_price* $("#buying_quantity").val());
+});
+
+
+function addToViewSale() {
+  var pid = $('#id').val();
+  var data ='<tr id='+pid+'><th scope="row">'+$('#id').val()+'</th>'
+            +'<td>'+$('#code').val()+'</td>'
+            +'<td>'+$('#name').val()+'</td>'
+            +'<td>'+$('#buying_quantity').val()+'</td>'
+            +'<td class ="price">'+$('#cost').val()+'</td>'
+            +'<td class ="priceBuy">'+$('#totalBuyPrice').val()+'</td>'
+            +'<td>'+'<button onclick="removeRow('+pid+')">Remove</button>'+'</td></tr>';
+  $("#salesItem").append(data);
+  $('#buyNowModal').modal('hide');
+  calculateSum();
+};
+
+
+
+// Price Calculation Function start
+function calculateSum() {
+            //-- coloum sum [start]
+            var sum = 0;
+            // iterate through each td based on class and add the values
+            $(".price").each(function() {
+
+                var value = $(this).text();
+                // add only if the value is number
+                if(!isNaN(value) && value.length != 0) {
+                    sum += parseFloat(value);
+                }
+            });    
+            //-- coloum sum [end]
+
+            //-- discount [start]
+            var totalBuyPrice = 0;
+            $(".priceBuy").each(function() {
+
+              var value = $(this).text();
+              // add only if the value is number
+              if(!isNaN(value) && value.length != 0) {
+                totalBuyPrice += parseFloat(value);
+              }
+            }); 
+            $('#result').text( ( sum )+' TK');
+            $('#discountAmount').text( ( $('#discount').val() )+' TK');
+            $('#discountResult').text( ( sum - $('#discount').val() )+' TK');
+            $('#con').prop('disabled', false);
+            
+            //-- discount [start]
+            if ($('#discount').val()) {
+              if ( ( sum - totalBuyPrice ) > $('#discount').val() ) {
+                $('#con').prop('disabled', false);
+                $('#result').text( ( sum )+' TK');
+                $('#discountAmount').text( ( $('#discount').val() )+' TK');
+                $('#discountResult').text( ( sum - $('#discount').val() )+' TK');
+              }else{
+                  $('#con').prop('disabled', true);
+                  $('#result').text( ( sum )+' TK');
+                  $('#discountAmount').text( ( $('#discount').val() )+' TK');
+                  $('#discountResult').text( ( sum )+' TK');
+                  // alert('loss')
+              }
+            }   
+            
+            //-- discount [end]
+
+            // $('#result').text( ( sum )+' TK');
+            // $('#discountAmount').text( ( $('#discount').val() )+' TK');
+            // $('#discountResult').text( ( sum - $('#discount').val() )+' TK');
+            // $('#test_price').val(sum);
+
+            // if ($('#discount').val() > sum ) {
+            //     $('#con').prop('disabled', true);
+            // }
+
+            // count table row //
+            var tr = $('#salesItem tr').length;
+            // alert(rowCount);
+            if(tr >= 1){
+                    // $('#con').prop('disabled', false);
+                    // $('#dis').prop('disabled', false);
+                    $('#discount').prop('disabled', false);
+                    $('#discount').prop('type', 'number');
+                    $('#rseTbody').prop('hidden', false);
+                }else{
+                    // $('#con').prop('disabled', true);
+                    // $('#dis').prop('disabled', true);
+                    $('#discount').prop('disabled', true);
+                    $('#discount').prop('type', 'hidden');
+                    $('#rseTbody').prop('hidden', true);
+                }
+            
+
+        }
+        // Price Calculation Function end
+
+// function remove(rowId) {
+//   alert(rowId);
+// }
+function removeRow(rowId) {
+    // alert(rowId+' delete me');
+    $('#'+rowId).remove();
+
+    calculateSum();
+
+    // var t = $('#tableData').prop('outerHTML');
+    
+    // $("#t_data").val(t);
+
+
+    //----count table row---//
+    var tr = $('#salesItem tr').length;
+    // alert(rowCount);
+    if(tr >= 1){
+        // $('#con').prop('disabled', false);
+        // $('#dis').prop('disabled', false);
+        $('#discount').prop('disabled', false);
+        $('#discount').prop('type', 'number');
+        $('#rseTbody').prop('hidden', false);
+    }else{
+        // $('#con').prop('disabled', true);
+        // $('#dis').prop('disabled', true);
+        $('#discount').prop('disabled', true);
+        $('#discount').prop('type', 'hidden');
+        $('#rseTbody').prop('hidden', true);
     }
+}
   
 
 </script>

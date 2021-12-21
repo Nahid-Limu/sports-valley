@@ -156,6 +156,28 @@ class SalesController extends Controller
         
     }
 
+    public function sealProductDetails($id)
+    {
+        // dd(121);
+        // $Product = Product::find($id);dd($Product);
+        $sealproduct = DB::table('products')
+            ->join('category_details', 'products.cd_id', '=', 'category_details.id')
+            ->join('brands', 'products.brand_id', '=', 'brands.id')
+            ->join('product_images', 'products.id', '=', 'product_images.p_id')
+            ->select('products.id','products.code','products.name','products.quantity',
+                'products.buying_price','products.selling_price',
+                
+                
+                'product_images.image',
+                // DB::raw("(GROUP_CONCAT(product_images.image SEPARATOR '@')) as `image`") 
+                )
+            // ->groupBy('products.id')
+            ->where('products.id',$id)
+            ->first();
+            // dd($sealproduct);
+        return response()->json($sealproduct);
+    }
+
     public function test()
     {
         $latestProduct = Product::all();
