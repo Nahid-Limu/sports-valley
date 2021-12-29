@@ -72,6 +72,7 @@ Route::group(['middleware'=>'auth'], function () {
     //--sales--//
     Route::get('/sales', 'SalesController@salesView')->name('sales');
     Route::post('/autoSearch', 'SalesController@autoSearch')->name('autoSearch');
+    Route::post('/printInvoice', 'SalesController@printInvoice')->name('printInvoice');
     //  Route::post('/addProduct', 'ProductController@addProduct')->name('addProduct');
     // Route::get('/editBrand/{id}', 'BrandController@editBrand')->name('editBrand');
     // Route::post('/updateBrand', 'BrandController@updateBrand')->name('updateBrand');

@@ -124,7 +124,7 @@
         <strong id="success_message" class="text-success"></strong>
         
         <div class="dropdown no-arrow">
-          <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewBuyProductsModal"><i class="fas fa-plus fa-fw mr-2 text-gray-400"></i>View Sale Items</button>
+          <button type="button" id="ViewSaleItemsBtn" class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewBuyProductsModal" disabled><i class="fa fa-eye" aria-hidden="true"></i> View Sale Items</button>
         </div>
       </div>
   
@@ -164,8 +164,7 @@
                         
                     </td>
                     <td>
-                        <div class="d-flex justify-content-center"><button type="button" onclick="buyNow( {{ $product->id }})" name="edit" id="'.$data->id.'" class="edit btn btn-sm d-flex justify-content-center" data-toggle="modal" data-target="#buyNowModal" data-placement="top" title="Edit"><i class="fa fa-edit" style="color: aqua"> BUY</i></button>
-                        <button type="button" onclick="deleteModal('.$data->id.',\''.$data->name.'\')" name="delete" id="'.$data->id.'" class="delete btn btn-sm" data-toggle="modal" data-target="#DeleteConfirmationModal" data-placement="top" title="Delete"  style="color: red"><i class="fa fa-trash"> Delete</i></button></div>
+                      <button type="button" onclick="buyNow( {{ $product->id }})" name="edit" id="'.$data->id.'" class="btn btn-sm edit" data-toggle="modal" data-target="#buyNowModal" data-placement="top" title="Edit"><i class="fa fa-cart-plus" aria-hidden="true" style="color: darkorange"> BuY </i></button>
                     </td>
                     
                 </tr>
@@ -179,6 +178,7 @@
   </div>
 @include('admin.sales.modal.buyNowModal')
 @include('admin.sales.modal.viewBuyProductsModal')
+@include('admin.sales.modal.print')
 
 @endsection
 
@@ -232,188 +232,283 @@
       
   }
 
-  
-
-  // Price Calculation Function start
 
   $(document).ready(function() {
     $('#ProductDetailsListTable').DataTable();
-} );
+  });
 
-
-function buyNow(id) {
-    $('#buying_quantity').val(0);
+  //---Buy Button Function in sale page---//
+  function buyNow(id) {
+      $('#buying_quantity').val(0);
       $('#cost').val(0);
-     $.ajax({
-          type: 'GET',
-          url: "{{url('sealProductDetails')}}"+"/"+id,
-          success: function (response) {
-              console.log(response);
-              if (response) {
-                $('#id').val(response.id);
-                $('#image').attr("src", "product_img"+"/"+response.image);
-                $('#code').val(response.code);
-                $('#name').val(response.name);
-                $('#quantity').val(response.quantity+" Piece");
-                $('#sale_price').val(response.selling_price+" TK");
-                $('#buy_price').val(response.buying_price+" TK");
+      $.ajax({
+            type: 'GET',
+            url: "{{url('sealProductDetails')}}"+"/"+id,
+            success: function (response) {
+                // console.log(response);
+                if (response) {
+                  $('#id').val(response.id);
+                  $('#image').attr("src", "product_img"+"/"+response.image);
+                  $('#code').val(response.code);
+                  $('#name').val(response.name);
+                  $('#quantity').val(response.quantity+" Piece");
+                  $('#sale_price').val(response.selling_price+" TK");
+                  $('#buy_price').val(response.buying_price+" TK");
+                  
+                  $('#buying_quantity').prop('max',response.quantity);
+                  
+                  // if (response.show_status == 1) {
+                  //   $('#eshow_status').prop('checked', true);
+                  // }else{
+                  //   $('#eshow_status').prop('checked', false);
+                  // }
+                  // alert(id);
                 
-                $('#buying_quantity').prop('max',response.quantity);
-                
-                // if (response.show_status == 1) {
-                //   $('#eshow_status').prop('checked', true);
-                // }else{
-                //   $('#eshow_status').prop('checked', false);
-                // }
-                // alert(id);
-               
-                
-              }
-
-          },error:function(){ 
-              console.log(response);
-          }
-      });
-}
-
-
-$("#buying_quantity").on('change', function(){
-  var sale_price=$('#sale_price').val();  
-  sale_price=parseInt(sale_price);
-  $('#cost').val(sale_price* $("#buying_quantity").val());
-
-  var buy_price=$('#buy_price').val();  
-  buy_price=parseInt(buy_price);
-  $('#totalBuyPrice').val(buy_price* $("#buying_quantity").val());
-});
-
-
-function addToViewSale() {
-  var pid = $('#id').val();
-  var data ='<tr id='+pid+'><th scope="row">'+$('#id').val()+'</th>'
-            +'<td>'+$('#code').val()+'</td>'
-            +'<td>'+$('#name').val()+'</td>'
-            +'<td>'+$('#buying_quantity').val()+'</td>'
-            +'<td class ="price">'+$('#cost').val()+'</td>'
-            +'<td class ="priceBuy">'+$('#totalBuyPrice').val()+'</td>'
-            +'<td>'+'<button onclick="removeRow('+pid+')">Remove</button>'+'</td></tr>';
-  $("#salesItem").append(data);
-  $('#buyNowModal').modal('hide');
-  calculateSum();
-};
-
-
-
-// Price Calculation Function start
-function calculateSum() {
-            //-- coloum sum [start]
-            var sum = 0;
-            // iterate through each td based on class and add the values
-            $(".price").each(function() {
-
-                var value = $(this).text();
-                // add only if the value is number
-                if(!isNaN(value) && value.length != 0) {
-                    sum += parseFloat(value);
+                  
                 }
-            });    
-            //-- coloum sum [end]
 
-            //-- discount [start]
-            var totalBuyPrice = 0;
-            $(".priceBuy").each(function() {
+            },error:function(){ 
+                console.log(response);
+            }
+      });
+  }
+  //---Buy Button Function in sale page---//
 
-              var value = $(this).text();
-              // add only if the value is number
-              if(!isNaN(value) && value.length != 0) {
-                totalBuyPrice += parseFloat(value);
-              }
-            }); 
-            $('#result').text( ( sum )+' TK');
-            $('#discountAmount').text( ( $('#discount').val() )+' TK');
-            $('#discountResult').text( ( sum - $('#discount').val() )+' TK');
-            $('#con').prop('disabled', false);
-            
-            //-- discount [start]
-            if ($('#discount').val()) {
-              if ( ( sum - totalBuyPrice ) > $('#discount').val() ) {
-                $('#con').prop('disabled', false);
-                $('#result').text( ( sum )+' TK');
-                $('#discountAmount').text( ( $('#discount').val() )+' TK');
-                $('#discountResult').text( ( sum - $('#discount').val() )+' TK');
-              }else{
-                  $('#con').prop('disabled', true);
-                  $('#result').text( ( sum )+' TK');
-                  $('#discountAmount').text( ( $('#discount').val() )+' TK');
-                  $('#discountResult').text( ( sum )+' TK');
-                  // alert('loss')
-              }
-            }   
-            
-            //-- discount [end]
+  //add button in sale product details disabe/enable
+  $("#buying_quantity").bind('keyup mouseup', function () {
+      // alert("changed");    
+      if ( $("#buying_quantity").val()> 0) {
+        $("#addBtn").prop('disabled', false);
+      } else {
+        $("#addBtn").prop('disabled', true);
+      }
 
-            // $('#result').text( ( sum )+' TK');
-            // $('#discountAmount').text( ( $('#discount').val() )+' TK');
-            // $('#discountResult').text( ( sum - $('#discount').val() )+' TK');
-            // $('#test_price').val(sum);
+      var sale_price=$('#sale_price').val();  
+      sale_price=parseInt(sale_price);
+      $('#cost').val(sale_price* $("#buying_quantity").val());
 
-            // if ($('#discount').val() > sum ) {
-            //     $('#con').prop('disabled', true);
-            // }
+      var buy_price=$('#buy_price').val();  
+      buy_price=parseInt(buy_price);
+      $('#totalBuyPrice').val(buy_price* $("#buying_quantity").val());
 
-            // count table row //
-            var tr = $('#salesItem tr').length;
-            // alert(rowCount);
-            if(tr >= 1){
+  });
+  //add button in sale product details disabe/enable
+
+
+  //---add product from sale product details modal to viewBuyProduct modal---//
+  function addToViewSale() {
+    var pid = $('#id').val();
+    // var obj = {};
+    // obj[pid] = $('#buying_quantity').val();
+    
+    var data ='<tr id='+pid+'><th class ="salePid" scope="row">'+$('#id').val()+'</th>'
+              +'<td>'+$('#code').val()+'</td>'
+              +'<td>'+$('#name').val()+'</td>'
+              +'<td class ="salePQuentity">'+$('#buying_quantity').val()+'</td>'
+              +'<td class ="price">'+$('#cost').val()+'</td>'
+              +'<td class ="priceBuy">'+$('#totalBuyPrice').val()+'</td>'
+              +'<td class="actionCol">'+'<button class="btn btn-sm btn-danger" onclick="removeRow('+pid+')"><i class="fa fa-trash" aria-hidden="true"></i></button>'+'</td></tr>';
+    $("#salesItem").append(data);
+    $('#buyNowModal').modal('hide');
+    calculateSum();
+    // console.log(obj);
+    // alert(obj);
+  };
+  //---add product from sale product details modal to viewBuyProduct modal---//
+
+  //---Price Calculation Function start---//
+  function calculateSum() {
+              //-- coloum sum [start]
+                var sum = 0;
+                // iterate through each td based on class and add the values
+                $(".price").each(function() {
+
+                    var value = $(this).text();
+                    // add only if the value is number
+                    if(!isNaN(value) && value.length != 0) {
+                        sum += parseFloat(value);
+                    }
+                });    
+              //-- coloum sum [end]
+
+              //--total buy price calculate---//
+                var totalBuyPrice = 0;
+                $(".priceBuy").each(function() {
+
+                  var value = $(this).text();
+                  // add only if the value is number
+                  if(!isNaN(value) && value.length != 0) {
+                    totalBuyPrice += parseFloat(value);
+                  }
+                }); 
+              //--total buy price calculate---//
+
+              $('#result').text( ( sum )+' TK');
+              $('#discountAmount').text( ( $('#discount').val() )+' TK');
+              $('#discountResult').text( ( sum - $('#discount').val() )+' TK');
+              $('#con').prop('disabled', false);
+
+              $('#buyingPrice').val(totalBuyPrice)
+              $('#saleingPrice').val(sum)
+              $('#lessAmount').val()
+
+              //---discount [start]---//
+                if ($('#discount').val()) {
+                  if ( ( sum - totalBuyPrice ) > $('#discount').val() ) {
+                    $('#con').prop('disabled', false);
+                    $('#result').text( ( sum )+' TK');
+                    $('#discountAmount').text( ( $('#discount').val() )+' TK');
+                    $('#discountResult').text( ( sum - $('#discount').val() )+' TK');
+                    
+                    $('#buyingPrice').val(totalBuyPrice)
+                    $('#saleingPrice').val(sum)
+                    $('#lessAmount').val($('#discount').val())
+                  }else{
+                      $('#con').prop('disabled', true);
+                      $('#result').text( ( sum )+' TK');
+                      $('#discountAmount').text( ( 0 )+' TK');
+                      $('#discountResult').text( ( sum )+' TK');
+
+                      $('#buyingPrice').val(totalBuyPrice)
+                      $('#saleingPrice').val(sum)
+                      $('#lessAmount').val($('#discount').val())
+                      // alert('loss')
+                  }
+                }   
+              //---discount [end]----//
+
+              // $('#result').text( ( sum )+' TK');
+              // $('#discountAmount').text( ( $('#discount').val() )+' TK');
+              // $('#discountResult').text( ( sum - $('#discount').val() )+' TK');
+              // $('#test_price').val(sum);
+
+              // if ($('#discount').val() > sum ) {
+              //     $('#con').prop('disabled', true);
+              // }
+
+              //---count table row---//
+                var tr = $('#salesItem tr').length;
+                // alert(rowCount);
+                if(tr >= 1){
                     // $('#con').prop('disabled', false);
                     // $('#dis').prop('disabled', false);
                     $('#discount').prop('disabled', false);
-                    $('#discount').prop('type', 'number');
+                    $('#discount').prop('type', 'text');
                     $('#rseTbody').prop('hidden', false);
+                    $('#ViewSaleItemsBtn').prop('disabled', false);
                 }else{
                     // $('#con').prop('disabled', true);
                     // $('#dis').prop('disabled', true);
                     $('#discount').prop('disabled', true);
                     $('#discount').prop('type', 'hidden');
                     $('#rseTbody').prop('hidden', true);
+                    $('#ViewSaleItemsBtn').prop('disabled', true);
                 }
-            
+              //---count table row---//
+              
 
-        }
-        // Price Calculation Function end
+  }
+  //---Price Calculation Function end---//
 
-// function remove(rowId) {
-//   alert(rowId);
-// }
-function removeRow(rowId) {
-    // alert(rowId+' delete me');
-    $('#'+rowId).remove();
+  //---Remove Table Row---//
+  function removeRow(rowId) {
+      // alert(rowId+' delete me');
+      $('#'+rowId).remove();
 
-    calculateSum();
+      calculateSum();
 
-    // var t = $('#tableData').prop('outerHTML');
-    
-    // $("#t_data").val(t);
+      // var t = $('#tableData').prop('outerHTML');
+      
+      // $("#t_data").val(t);
 
 
-    //----count table row---//
-    var tr = $('#salesItem tr').length;
-    // alert(rowCount);
-    if(tr >= 1){
-        // $('#con').prop('disabled', false);
-        // $('#dis').prop('disabled', false);
-        $('#discount').prop('disabled', false);
-        $('#discount').prop('type', 'number');
-        $('#rseTbody').prop('hidden', false);
-    }else{
-        // $('#con').prop('disabled', true);
-        // $('#dis').prop('disabled', true);
-        $('#discount').prop('disabled', true);
-        $('#discount').prop('type', 'hidden');
-        $('#rseTbody').prop('hidden', true);
-    }
-}
+      //----count table row---//
+      var tr = $('#salesItem tr').length;
+      // alert(rowCount);
+      if(tr >= 1){
+        
+          $('#ViewSaleItemsBtn').prop('disabled', false);
+          $('#con').prop('disabled', false);
+          // $('#dis').prop('disabled', false);
+          $('#discount').prop('disabled', false);
+          $('#discount').prop('type', 'number');
+          $('#rseTbody').prop('hidden', false);
+      }else{
+          $('#ViewSaleItemsBtn').prop('disabled', true);
+          $('#con').prop('disabled', true);
+          // $('#dis').prop('disabled', true);
+          $('#discount').prop('disabled', true);
+          $('#discount').prop('type', 'hidden');
+          $('#rseTbody').prop('hidden', true);
+      }
+      //----count table row---//
+  }
+  //---Remove Table Row---//
+
+  //---Confirm button action in viewBuyProduct Modal---//
+  function confirm() {
+
+    $("#discount").remove();
+
+    idsQunantity()
+    // console.log( $("#pIds").val() );
+    // console.log( $("#pQuantity").val() );
+
+    var t = $('#tableData').prop('outerHTML');
+    // alert(t);
   
+    $("#t_data").val(t);
+    $("#tableDataPrint").html(t);
+    
+    $("#viewBuyProductsModal").modal("hide");
+    $('table#tableData th.actionCol ').remove();
+    $('table#tableData td.actionCol ').remove();
+
+    $('table#tableData th.priceBuy ').remove();
+    $('table#tableData td.priceBuy ').remove();
+    
+  }
+  //---Confirm button action in viewBuyProduct Modal---//
+
+  //---store ids and quantity of sale---//
+  function idsQunantity() {
+    $("#pIds").val('');
+    $(".salePid").each(function() {
+      var salePid = $(this).text();
+      $("#pIds").val(function() {
+          if (this.value == '') {
+              return salePid;
+          } else {
+              return this.value +',' + salePid;
+          }
+      });
+      
+    });
+    
+    $("#pQuantity").val('');
+    $(".salePQuentity").each(function() {
+        var salePQuentity = $(this).text();
+        $("#pQuantity").val(function() {
+            if (this.value == '') {
+                return salePQuentity;
+            } else {
+                return this.value +',' + salePQuentity;
+            }
+        });
+        
+    });   
+    
+  }
+  //---store ids and quantity of sale---//
+
+
+  //---current date time i print page---//
+  $(document).ready(function () {
+      var d = new Date(),
+          date = ((d.getMonth()+1) + '/' + (d.getDate()) + '/' + d.getFullYear());
+      $('#date').text(date);       
+  });
+  //---current date time i print page---//
 
 </script>
 @endsection

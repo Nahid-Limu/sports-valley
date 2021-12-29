@@ -9,6 +9,8 @@ use App\BusinessCategory;
 use App\Product;
 use App\Brand;
 use App\ProductImage;
+use App\Invoice;
+use App\Profite;
 use Auth;
 use DB;
 use Intervention\Image\Facades\Image as Image;
@@ -80,7 +82,7 @@ class SalesController extends Controller
             $output .='</tr>';
         }
 
-    //    dd($output);
+        //    dd($output);
         return view('admin.sales.salesView', compact('output','products'));
     }
 
@@ -176,6 +178,51 @@ class SalesController extends Controller
             ->first();
             // dd($sealproduct);
         return response()->json($sealproduct);
+    }
+
+    public function printInvoice(Request $request)
+    {
+        // dd($request->all());
+        $invoice_id = Invoice::count() + 1;
+        $pIds = explode(",", $request->pIds);
+        $pQuantity = explode(",", $request->pQuantity);
+        // dd($pQuantity);
+
+        //---Update Quantity and Insert Invoice---//
+            foreach ($pIds as $key => $pid) {
+                // dd( (int)$pQuantity[$key] );
+                $Product = Product::find($pid);
+                //---Update Product Quantity---//
+                    $Product->quantity = ($Product->quantity)- ( (int)$pQuantity[$key] );
+                    $Product->save();
+                //---Update Product Quantity---//
+               
+                //---insert Invoice data---//
+                    $Invoice = new Invoice;
+                    $Invoice->invoice_id = "#INVOICE-".$invoice_id;
+                    $Invoice->buyer_name = $request->bnameinp;
+                    $Invoice->buyer_address = $request->baddressinp;
+                    $Invoice->p_code = $Product->code;
+                    $Invoice->p_quantity = $pQuantity[$key];
+                    $Invoice->save();
+                //---insert Invoice data---//
+            }
+        //---Update Quantity and Insert Invoice---//
+
+        //---insert Profite data---//
+            $Profite = new Profite;
+            $Profite->invoice_id = "#INVOICE-".$invoice_id;
+            $Profite->buying_price = (int)$request->buyingPrice;
+            $Profite->selling_price = (int)$request->saleingPrice;
+            $Profite->discount_amount = (int)$request->lessAmount;
+            $Profite->profite = ( (int)$request->saleingPrice ) - ( (int)$request->buyingPrice + (int)$request->lessAmount );
+            $Profite->save();
+        //---insert Profite data---//
+        
+        // dd('okk');
+        // return response()->json($invoice_id);
+        return response()->json( ['InvoiceID' => "#INVOICE-".$invoice_id] );
+
     }
 
     public function test()

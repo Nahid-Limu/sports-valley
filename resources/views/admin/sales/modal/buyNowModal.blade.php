@@ -15,8 +15,8 @@
 
                 <form id="saleProductForm" enctype="multipart/form-data">  
                     @csrf
-                    <input type="text" name="id" id="id">
-                    <input type="text" name="totalBuyPrice" id="totalBuyPrice">
+                    <input type="text" name="id" id="id" hidden>
+                    <input type="text" name="totalBuyPrice" id="totalBuyPrice" hidden>
                     <div class="form-row">
                         <div class="form-group col-md-7">
                             <div class="form-row">
@@ -80,7 +80,7 @@
 
             <!-- Modal footer  class="modal-footer"-->
             <div class="modal-footer" style="display: inline">
-                <button onclick="addToViewSale()" type="button" class="btn btn-sm btn-success float-right">Add</button>
+                <button onclick="addToViewSale()" type="submit" id="addBtn" class="btn btn-sm btn-success float-right" disabled> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add</button>
                 <button onclick="onCloseModal('AddCategorieForm')" type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
                 {{-- <button onclick="testfun()" type="button" class="btn btn-danger">test</button> --}}
             </div>

@@ -11,8 +11,10 @@
             </div>
 
             <!-- Modal body -->
+            
+            <input type="text" value="" id="t_data" name="t_data" hidden>
             <div class="modal-body">
-                <table class="table">
+                <table class="table" id="tableData">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -20,20 +22,12 @@
                         <th scope="col">Product</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Price B</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" class ="priceBuy">Price B</th>
+                        <th scope="col" class="actionCol">Action</th>
                       </tr>
                     </thead>
                     <tbody id="salesItem">
-                      {{-- <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>111</td>
-                        <td><button>Remove</button></td>
-                      </tr> --}}
+                      
                       
                     </tbody>
                     <tbody id="rseTbody" hidden style="background:#f0ad4e; text-align: center; font-style: bold;">
@@ -51,7 +45,7 @@
                           <td><b> Discount</b></td>
                           <td><b>:</b></td>
                           <td ><b id="discountAmount" ><b></b></td>
-                          <td class ="testaction"><input type="hidden" class="form-control w-50 p-3 float-right" placeholder="Discount Amount" onkeyup="calculateSum()" id="discount" name="discount" value="" disabled="disabled"> </td>
+                          <td class ="testaction"><input type="hidden" pattern="[0-9]{1,5}" class="form-control w-50 p-3 float-right" placeholder="Discount Amount" onkeyup="calculateSum()" id="discount" name="discount" value="" disabled="disabled"> </td>
                       </tr>
                       <tr >
                           <td>&nbsp</td>
@@ -62,13 +56,13 @@
                           <td class ="testaction"><input type="hidden" class="form-control w-50 p-3 float-right" > </td>
                       </tr>
                   </tbody> 
-                  </table>
+                </table>
             </div>
 
             <!-- Modal footer  class="modal-footer"-->
             <div class="modal-footer" style="display: inline">
                 {{-- <button onclick="addCategoryDetails()" type="button" id="con" class="btn btn-sm btn-success float-right">Confirm</button> --}}
-                <button disabled="disabled" class="btn btn-sm btn-success float-right" type="submit" id="con" onclick="userRegModal()"><i class="fas fa-sign-out-alt"></i> Confirm</button>
+                <button disabled="disabled" class="btn btn-sm btn-success float-right" type="submit" id="con" onclick="confirm()" data-toggle="modal" data-target="#print"><i class="fas fa-sign-out-alt"></i> Confirm</button>
                 <button onclick="onCloseModal('AddCategorieForm')" type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
                 {{-- <button onclick="testfun()" type="button" class="btn btn-danger">test</button> --}}
             </div>
