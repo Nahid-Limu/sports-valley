@@ -31,29 +31,39 @@ class AdminController extends Controller
         $ThisDay = date("Y-m-d");
        
 
-        $TotalIncome = Profite::all()->sum('profite');
+        $TotalBusinessCategory = BusinessCategory::count();
+        $TotalCategoryDetails = CategoryDetails::count();
+        $TotalBrand = Brand::count();
+        $TotalProduct = Product::count();
+
+        $TotalIncome = Profite::all()->sum('selling_price');
+        $TotalProfite = Profite::all()->sum('profite');
         $TotalDiscount = Profite::all()->sum('discount_amount');
-        // $TotalExpense = DailyExpense::all()->sum('ammount');
-        // $ToatalClint = Clint::all()->Count();
-        // dd($TotalDiscount);
-        // $lineChartIncome = Invoice::select(DB::raw('YEAR(created_at) year, MONTH(created_at) month'),DB::raw('SUM(test_price) as monthlyTestPrice'))
-        // ->groupby('year','month')
-        // ->get();
+        $TotalExpense = 0;
         
+        
+        $lineChartIncome = Profite::select(DB::raw('YEAR(created_at) year, MONTH(created_at) month'),DB::raw('SUM(selling_price) as monthlyTestPrice'))
+        ->groupby('year','month')
+        ->get();
 
 
-        // $DailyIncome = Invoice::whereDate('created_at', $ThisDay)->sum('test_price');
-        // $MonthlyIncome = Invoice::whereMonth('created_at', $ThisMonth)->sum('test_price');
-        // $YearlyIncome = Invoice::whereYear('created_at', $ThisYear)->sum('test_price');
+        $DailyIncome = Profite::whereDate('created_at', $ThisDay)->sum('selling_price');
+        $MonthlyIncome = Profite::whereMonth('created_at', $ThisMonth)->sum('selling_price');
+        $YearlyIncome = Profite::whereYear('created_at', $ThisYear)->sum('selling_price');
 
         // $DailyExpense = DailyExpense::whereDate('created_at', $ThisDay)->sum('ammount');
         // $MonthlyExpense = DailyExpense::whereMonth('created_at', $ThisMonth)->sum('ammount');
         // $YearlyExpense = DailyExpense::whereYear('created_at', $ThisYear)->sum('ammount');
         
-        // $ToDaysInvoice = Invoice::whereDate('created_at', $ThisDay)->get()->Count();
-        // $ThisMonthsInvoice = Invoice::whereMonth('created_at', $ThisMonth)->get()->Count();
-        // $ThisYearsInvoice = Invoice::whereYear('created_at', $ThisYear)->get()->Count();
-        // $ToatalInvoice = Invoice::all()->Count();
-        return view('admin.dashboard');
+        $ToDaysInvoice = Invoice::whereDate('created_at', $ThisDay)->get()->Count();
+        $ThisMonthsInvoice = Invoice::whereMonth('created_at', $ThisMonth)->get()->Count();
+        $ThisYearsInvoice = Invoice::whereYear('created_at', $ThisYear)->get()->Count();
+        $ToatalInvoice = Invoice::all()->Count();
+        // dd($ToDaysInvoice);
+        // return view('admin.dashboard');
+        return view('admin.dashboard', compact('TotalBusinessCategory','TotalCategoryDetails','TotalBrand','TotalProduct'
+        ,'TotalIncome','TotalProfite','TotalDiscount','TotalExpense'
+        ,'DailyIncome','MonthlyIncome','YearlyIncome'
+        ,'ToDaysInvoice','ThisMonthsInvoice','ThisYearsInvoice','ToatalInvoice'));
     }
 }

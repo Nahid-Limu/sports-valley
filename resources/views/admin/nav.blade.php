@@ -7,21 +7,7 @@
   </button>
 
   <!-- Topbar Search -->
-  {{-- <form id="autosearch" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-    @csrf
-    <div class="input-group">
-      <input onkeyup="productsearch()" type="text" name="search" id="search" class="search_input form-control bg-light border-0 small" placeholder="Search for Products..." aria-label="Search" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-primary" type="button">
-          <i class="fas fa-search fa-sm"></i>
-        </button>
-      </div>
-    </div>
-  </form>
-  <p id="noTest" style="text-align: center" hidden></p>
-  <div  id="testlist" style="margin: auto; position: absolute;">
-    <ul><li id=1>bbs</li></ul>
-  </div> --}}
+  <marquee width="100%" behavior="alternate" ><span style="text-align: center" class="text-warning"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> <b style="color: red">WelCome To</b> <b style="color: orange">SportsValley.in</b> <i style="color: green">DashBoard</i> <i class="fa fa-puzzle-piece" aria-hidden="true"></i></span></marquee>
 
   <!-- Topbar Navbar -->
   <ul class="navbar-nav ml-auto">

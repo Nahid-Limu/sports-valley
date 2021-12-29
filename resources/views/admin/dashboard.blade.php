@@ -9,29 +9,31 @@
 <script>
   window.onload = function () {
 
-
-  var chart = new CanvasJS.Chart("chartContainerPie", {
-    animationEnabled: true,
-    title:{
-      text: "",
-      horizontalAlign: "left"
-    },
-    data: [{
-      type: "doughnut",
-      startAngle: 60,
-      //innerRadius: 60,
-      indexLabelFontSize: 17,
-      indexLabel: "{label} - #percent%",
-      toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-      dataPoints: [
-        
-        
-        
-      ]
-    }]
-  });
-  chart.render();
-  
+    var chart = new CanvasJS.Chart("chartContainerPie", {
+      animationEnabled: true,
+      title:{
+        text: "",
+        horizontalAlign: "left"
+      },
+      data: [{
+        type: "doughnut",
+        startAngle: 60,
+        //innerRadius: 60,
+        indexLabelFontSize: 12,
+        indexLabel: "{label} - #percent%",
+        toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+        dataPoints: [
+          
+          { y: <?php echo $TotalIncome; ?>, label: "TotalIncome" },
+          { y: <?php echo $TotalProfite; ?>, label: "TotalProfite" },
+          { y: <?php echo $TotalDiscount; ?>, label: "TotalC" },
+          { y: <?php echo $TotalExpense; ?>, label: "TotalExpense" },
+          
+        ]
+      }]
+    });
+    chart.render();
+    
   }
 </script>
 
@@ -41,9 +43,8 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
   
-  <marquee width="100%" direction="left" ><span style="text-align: center" class="text-warning"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> <b style="color: red">Business</b> <i style="color: green">Summary</i> <i class="fa fa-puzzle-piece" aria-hidden="true"></i></span></marquee>
-  
   <!-- Content Row -->
+  <marquee width="100%" direction="left" ><span style="text-align: center" class="text-warning"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> <b style="color: red">Business</b> <i style="color: green">Summary</i> <i class="fa fa-puzzle-piece" aria-hidden="true"></i></span></marquee>
   <div class="row">
 
     <!-- Earnings (Monthly) Card Example -->
@@ -52,11 +53,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Total)</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">900 TK</div>
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Business (Total)</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{$TotalBusinessCategory}}</div>
             </div>
             <div class="col-auto" style="color: green">
-              <i class="fas fa-dollar-sign fa-2x " style="color:green"></i>
+              <i class="fas fa-database fa-2x " style="color:#4e73df"></i>
               
             </div>
           </div>
@@ -70,11 +71,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Expense (Total)</div>
-              {{-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{$TotalExpense}} TK</div> --}}
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Categories (Total)</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{$TotalCategoryDetails}}</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x fa-2x " style="color:red"></i>
+              <i class="fas fa-database fa-2x fa-2x " style="color:#1cc88a"></i>
             </div>
           </div>
         </div>
@@ -87,15 +88,15 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Discount (Total)</div>
+              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Brands (Total)</div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
-                  {{-- <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$TotalDiscount}}</div> --}}
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$TotalBrand}}</div>
                 </div>
               </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x fa-2x " style="color:red"></i>
+              <i class="fas fa-database fa-2x fa-2x " style="color:#36b9cc"></i>
             </div>
           </div>
         </div>
@@ -108,11 +109,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Clints</div>
-              {{-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{$ToatalClint}}</div> --}}
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Products (Total)</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{$TotalProduct}}</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-users fa-2x fa-2x " style="color:royalblue"></i>
+              <i class="fas fa-database fa-2x fa-2x " style="color:#f6c23e"></i>
             </div>
           </div>
         </div>
@@ -129,7 +130,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Total)</div>
-              {{-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{$TotakIncome}} TK</div> --}}
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{$TotalIncome}} TK</div>
             </div>
             <div class="col-auto" style="color: green">
               <i class="fas fa-dollar-sign fa-2x " style="color:green"></i>
@@ -146,11 +147,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Expense (Total)</div>
-              {{-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{$TotalExpense}} TK</div> --}}
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Profit (Total)</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{$TotalProfite}} TK</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x fa-2x " style="color:red"></i>
+              <i class="fas fa-dollar-sign fa-2x fa-2x " style="color:green"></i>
             </div>
           </div>
         </div>
@@ -166,7 +167,7 @@
               <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Discount (Total)</div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
-                  {{-- <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$TotalDiscount}}</div> --}}
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$TotalDiscount}}</div>
                 </div>
               </div>
             </div>
@@ -184,11 +185,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Clints</div>
-              {{-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{$ToatalClint}}</div> --}}
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Expense (Total)</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">0 Tk</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-users fa-2x fa-2x " style="color:royalblue"></i>
+              <i class="fas fa-dollar-sign fa-2x fa-2x " style="color:red"></i>
             </div>
           </div>
         </div>
@@ -215,7 +216,7 @@
               <div class="card bg-primary text-white shadow">
                 <div class="card-body text-center">
                   Daily Income
-                  {{-- <div class="text-white font-weight-bold">{{$DailyIncome}} TK</div> --}}
+                  <div class="text-white font-weight-bold">{{$DailyIncome}} TK</div>
                 </div>
               </div>
             </div>
@@ -223,7 +224,7 @@
               <div class="card bg-success text-white shadow">
                 <div class="card-body text-center">
                   Monthly Income
-                  {{-- <div class="text-white font-weight-bold">{{$MonthlyIncome}} TK</div> --}}
+                  <div class="text-white font-weight-bold">{{$MonthlyIncome}} TK</div>
                 </div>
               </div>
             </div>
@@ -231,7 +232,7 @@
               <div class="card bg-info text-white shadow">
                 <div class="card-body text-center">
                   Yearly Income
-                  {{-- <div class="text-white font-weight-bold">{{$YearlyIncome}} TK</div> --}}
+                  <div class="text-white font-weight-bold">{{$YearlyIncome}} TK</div>
                 </div>
               </div>
             </div>
@@ -296,32 +297,32 @@
             </div>
             <div class="card-body">
 
-                {{-- <h4 class="small font-weight-bold">To Days Invoice <span class="float-right">{{$ToDaysInvoice}}</span></h4> --}}
+                <h4 class="small font-weight-bold">To Days Invoice <span class="float-right">{{$ToDaysInvoice}}</span></h4>
                 <div class="progress mb-4">
-                {{-- <div class="progress-bar bg-danger" role="progressbar" style="width: {{$ToDaysInvoice}}%" aria-valuenow="20"
-                    aria-valuemin="0" aria-valuemax="100"></div> --}}
+                <div class="progress-bar bg-danger" role="progressbar" style="width: {{$ToDaysInvoice}}%" aria-valuenow="20"
+                    aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
 
-                {{-- <h4 class="small font-weight-bold">This Months Invoice<span class="float-right">{{$ThisMonthsInvoice}}</span> --}}
+                <h4 class="small font-weight-bold">This Months Invoice<span class="float-right">{{$ThisMonthsInvoice}}</span>
                 </h4>
                 <div class="progress mb-4">
-                {{-- <div class="progress-bar bg-warning" role="progressbar" style="width: {{$ThisMonthsInvoice}}%"
-                    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div> --}}
+                <div class="progress-bar bg-warning" role="progressbar" style="width: {{$ThisMonthsInvoice}}%"
+                    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
 
-                {{-- <h4 class="small font-weight-bold">This Years Invoice <span class="float-right">{{$ThisYearsInvoice}}</span> --}}
+                <h4 class="small font-weight-bold">This Years Invoice <span class="float-right">{{$ThisYearsInvoice}}</span>
                 </h4>
                 <div class="progress mb-4">
-                {{-- <div class="progress-bar bg-info" role="progressbar" style="width: {{$ThisYearsInvoice}}%" aria-valuenow="60"
-                    aria-valuemin="0" aria-valuemax="100"></div> --}}
+                <div class="progress-bar bg-info" role="progressbar" style="width: {{$ThisYearsInvoice}}%" aria-valuenow="60"
+                    aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
 
-                {{-- <h4 class="small font-weight-bold">Total Invoice <span class="float-right">{{$ThisYearsInvoice}}</span> --}}
+                <h4 class="small font-weight-bold">Total Invoice <span class="float-right">{{$ThisYearsInvoice}}</span>
                 </h4>
                 <div class="progress mb-4">
-                    {{-- <div class="progress-bar bg-success" role="progressbar" style="width: {{$ToatalInvoice}}%" aria-valuenow="60"
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{$ToatalInvoice}}%" aria-valuenow="60"
                         aria-valuemin="0" aria-valuemax="100">
-                    </div> --}}
+                    </div>
                 </div>
                 
             </div>
@@ -391,17 +392,20 @@
         <div class="card-body">
           <div class="chart-pie pt-4 pb-2">
             {{--<canvas id="myPieChart"></canvas>--}}
-            <div id="chartContainerPie" style="height: 300px; width: 100%;"></div>
+            <div id="chartContainerPie" style="height: 200px; width: 100%;"></div>
           </div>
           <div class="mt-4 text-center small">
             <span class="mr-2">
-              <i class="fas fa-circle text-primary"></i> Direct
+              <i class="fas fa-circle" style="color: #4f81bc"></i> INCOME
             </span>
             <span class="mr-2">
-              <i class="fas fa-circle text-success"></i> Social
+              <i class="fas fa-circle" style="color: #c0504e"></i> PROFIT 
             </span>
             <span class="mr-2">
-              <i class="fas fa-circle text-info"></i> Referral
+              <i class="fas fa-circle" style="color: #9bbb58"></i> DISCOUNT
+            </span>
+            <span class="mr-2">
+              <i class="fas fa-circle" style="color: #23bfaa"></i> Expense
             </span>
           </div>
         </div>
@@ -418,5 +422,5 @@
 @endsection
 
 @section('script')
-// <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
 @endsection

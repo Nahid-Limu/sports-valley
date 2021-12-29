@@ -1,3 +1,4 @@
+
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
   
@@ -15,7 +16,7 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
       <a class="nav-link" href="{{ route('dashboard') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="sbicn fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
 
@@ -45,8 +46,8 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link" href="{{ route('productSettings') }}">
-        <i class="fas fa-fw fa-cog"></i>
-        <span>Product </span></a>
+        <i class="fab fa-product-hunt"></i>
+        <span>Products </span></a>
     </li>
 
     {{-- @if(Auth::user()->is_role == 'admin' || Auth::user()->is_role == 'superadmin') --}}

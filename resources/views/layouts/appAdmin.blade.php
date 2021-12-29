@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" type="image/png" href="{!! asset('img/SOFTWARE-ICON.ico') !!}"/>
+    <link rel="icon" type="image/png" href="{!! asset('system_img').'/'.'icon.png' !!}"/>
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
     <title> @yield('title')</title>
 
@@ -37,6 +37,7 @@
       .successInputBox {
           border: 1px solid green !important;
       }
+      
     </style>
     @yield('css')
 
