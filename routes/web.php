@@ -71,15 +71,12 @@ Route::group(['middleware'=>'auth'], function () {
 
     //--sales--//
     Route::get('/sales', 'SalesController@salesView')->name('sales');
-    Route::post('/autoSearch', 'SalesController@autoSearch')->name('autoSearch');
+    Route::get('/sealProductDetails/{id}', 'SalesController@sealProductDetails')->name('sealProductDetails');
     Route::post('/printInvoice', 'SalesController@printInvoice')->name('printInvoice');
-    //  Route::post('/addProduct', 'ProductController@addProduct')->name('addProduct');
-    // Route::get('/editBrand/{id}', 'BrandController@editBrand')->name('editBrand');
-    // Route::post('/updateBrand', 'BrandController@updateBrand')->name('updateBrand');
-    //  Route::get('/deleteProduct/{id}', 'ProductController@deleteProduct')->name('deleteProduct');
+    
     Route::get('/test', 'SalesController@test')->name('test');
 
-    Route::get('/sealProductDetails/{id}', 'SalesController@sealProductDetails')->name('sealProductDetails');
+    
 });
 /* Admin route end */
 

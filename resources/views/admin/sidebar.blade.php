@@ -24,7 +24,7 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    <div class="sidebar-heading text-warning">
       Sales Area
     </div>
 
@@ -39,7 +39,7 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    <div class="sidebar-heading text-warning">
       Product Details
     </div>
 
@@ -88,7 +88,7 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    <div class="sidebar-heading text-warning">
       Seetings
     </div>
 

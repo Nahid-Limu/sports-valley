@@ -144,33 +144,34 @@
                 </tr>
             </thead>
             <tbody>
-            {{-- {!! $output !!} --}}
-                @foreach ($products as $product)
-                <tr>
-                    <td>{{ $product->code }}</td>
-                    <td>{{ $product->name }}</td>
-                    <td>{{ $product->quantity }}</td>
-                    <td>{{ $product->barnd }}</td>
-                    <td>{{ $product->buying_price }}</td>
-                    <td>{{ $product->selling_price }}</td>
+              {{-- product output from controller --}}
+                  @foreach ($products as $product)
+                  <tr>
+                      <td>{{ $product->code }}</td>
+                      <td>{{ $product->name }}</td>
+                      <td>{{ $product->quantity }}</td>
+                      <td>{{ $product->barnd }}</td>
+                      <td>{{ $product->buying_price }}</td>
+                      <td>{{ $product->selling_price }}</td>
+                  
+                      <td>
+                          @php
+                              $img = explode("@",$product->image);
+                          @endphp
+                          @foreach ($img as $key => $item)
+                          <img src="{{ asset('product_img').'/'.$img[$key] }}" style='widows: 40px; height: 40px; margin-bottom: 10px;'><br>
+                          @endforeach
+                          
+                      </td>
+                      <td>
+                        <button type="button" onclick="buyNow( {{ $product->id }})" name="edit" id="'.$data->id.'" class="btn btn-sm edit" data-toggle="modal" data-target="#buyNowModal" data-placement="top" title="Edit"><i class="fa fa-cart-plus" aria-hidden="true" style="color: darkorange"> BuY </i></button>
+                      </td>
+                      
+                  </tr>
+                  @endforeach
+              {{-- product output from controller --}}
                 
-                    <td>
-                        @php
-                            $img = explode("@",$product->image);
-                        @endphp
-                        @foreach ($img as $key => $item)
-                        <img src="{{ asset('product_img').'/'.$img[$key] }}" style='widows: 40px; height: 40px; margin-bottom: 10px;'><br>
-                        @endforeach
-                        
-                    </td>
-                    <td>
-                      <button type="button" onclick="buyNow( {{ $product->id }})" name="edit" id="'.$data->id.'" class="btn btn-sm edit" data-toggle="modal" data-target="#buyNowModal" data-placement="top" title="Edit"><i class="fa fa-cart-plus" aria-hidden="true" style="color: darkorange"> BuY </i></button>
-                    </td>
-                    
-                </tr>
-                @endforeach
-            
-        </tbody>
+            </tbody>
 
         </table>
     </div>
@@ -184,54 +185,6 @@
 
 @section('script')
 <script>
-
-  function productsearch() {
-
-      $('#noTest').prop('hidden', true);
-
-      // var _token = '{{ csrf_token() }}';
-      var search = $("#search").val();
-      var SearchedTestIds = $("#testIds").val();
-      var form = $('#autosearch')[0];
-      var formdata = new FormData(form);
-      // alert(search);
-      if(search != ''){
-
-          $.ajax({
-            url:"{{ route('autoSearch') }}",
-            method:"POST",
-            data:formdata,
-            dataType:'JSON',
-            contentType: false,
-            cache: false,
-            processData: false,
-            success:function(response)
-              {
-                    console.log(response);
-                    // if (response.output !=0) {
-                    //   $("#salesProductlist").append(response.output);
-                    //   // $('#salesProductlist').append( $(response) );
-
-                    // }else{
-                    //   e.preventDefault();
-                    //   $(this).parent().remove();
-                    // }
-                    $("#testlist").fadeOut();
-                    if (response == 0) {
-                            $('#noTest').prop('hidden', false);
-                            $("#noTest").text('No Data Found or Already Used');
-                        }else{
-                            // $('#noTest').prop('hidden', true);
-                            $("#testlist").fadeIn();
-                            $("#testlist").html(response);
-                        }
-              }
-            });
-          
-      }
-      
-  }
-
 
   $(document).ready(function() {
     $('#ProductDetailsListTable').DataTable();

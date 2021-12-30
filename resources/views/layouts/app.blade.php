@@ -38,7 +38,7 @@
 	<link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-
+    <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	<!-- Magnific Popup -->
 	<link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
 
