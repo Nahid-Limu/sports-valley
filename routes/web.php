@@ -23,6 +23,11 @@ Route::get('/about', 'UserController@about')->name('about');
 Route::get('/contact', 'SendEmailController@contact')->name('contact');
 Route::post('/contact/sendmail', 'SendEmailController@sendmail')->name('sendmail');
 
+Route::get('/pbcevent', 'EventController@pbcevent')->name('pbcevent');
+Route::post('/pbceventreg', 'EventController@pbceventreg')->name('pbceventreg');
+
+
+
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
     // return what you want
@@ -73,6 +78,11 @@ Route::group(['middleware'=>'auth'], function () {
     Route::get('/sales', 'SalesController@salesView')->name('sales');
     Route::get('/sealProductDetails/{id}', 'SalesController@sealProductDetails')->name('sealProductDetails');
     Route::post('/printInvoice', 'SalesController@printInvoice')->name('printInvoice');
+
+    //--events--//
+    Route::get('/eventDataView', 'EventController@eventDataView')->name('eventDataView');
+    Route::get('/viewSingleData/{id}', 'EventController@viewSingleData')->name('viewSingleData');
+    Route::get('/deleteTeam/{id}', 'EventController@deleteTeam')->name('deleteTeam');
     
     Route::get('/test', 'SalesController@test')->name('test');
 

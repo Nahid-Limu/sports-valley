@@ -111,6 +111,21 @@
     </li>
 
     <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading text-warning">
+      Event
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('eventDataView') }}">
+        <i class="fa fa-calendar"></i>
+        <span>Event Details</span></a>
+    </li>
+
+    <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
     {{-- @if(Auth::user()->is_role == 'admin' || Auth::user()->is_role == 'superadmin') --}}
         

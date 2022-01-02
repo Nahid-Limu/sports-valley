@@ -12,7 +12,7 @@
 </style>
 <nav class="colorlib-nav bg-info" role="navigation">
   <div class="">
-  {{-- <div class="top-menu"> --}}
+    
     <div class="container ">
       <div class=" ">
         
@@ -58,7 +58,7 @@
               <div class="item">
                 <div class="col">
                   <marquee width="100%" behavior="alternate" ><span style="text-align: center" class="text-warning"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> <b style="color:orange;">Good</b> <b style="color: orange">News</b> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></marquee>
-                  <h3><a href="#">Click Here For Badminton Tournament Registation <img src="{{ asset('system_img').'/'.'register-button.png' }}" style="height: 60px"></a></h3>
+                  <h3><a href="{{ route('pbcevent') }}">Click Here For Badminton Tournament Registation <img src="{{ asset('system_img').'/'.'register-button.png' }}" style="height: 60px"></a></h3>
                 </div>
               </div>
               {{-- <div class="item">
@@ -72,4 +72,5 @@
       </div>
     </div>
   </div>
+  {{-- <div style="width:100%"><div style="height:0;padding-bottom:85.5072463768116%;position:relative;width:100%"><iframe allowfullscreen="" frameBorder="0" height="100%" src="https://giphy.com/embed/p57qQtbABJ411xjEhC/video" style="left:0;position:absolute;top:0" width="100%"></iframe></div></div> --}}
 </nav>
