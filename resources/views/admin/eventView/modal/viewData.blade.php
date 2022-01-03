@@ -16,20 +16,30 @@
 
             <!-- Modal body -->
             <div class="row container">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <h4 class="text-success text-center">Team Name : <strong id="teamName" class="text-dark uppercase"></strong></h4>
+                    </div>
+                </div>
+
                 <div class="col-md-6">
                     <div class="form-group">
-                        <h4 class="text-success">Team Name : <strong id="teamName" class="text-dark uppercase"></strong></h4>
+                        <h5 class="text-success">Manager Name : <strong id="teamManagerName" class="text-dark uppercase"></strong></h5>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <h4 class="text-success">Manager Name : <strong id="teamManagerName" class="text-dark uppercase"></strong></h4>
+                        <h5 class="text-success">Phone : <strong id="phoneNo" class="text-dark uppercase"></strong></h5>
                     </div>
                 </div>
+                
+                <hr>
+                
                 <div class="w-100"></div>
 
                 <div class="col-md-5 border border-danger" style="margin-left: 20px;">
                     <h5 class="text-center font-weight-bold"><kbd>PLAYER 1 DETAILS</kbd></h5>
+                    <div id="p1image"></div>
                     <div class="form-group">
                         <label class="text-success">Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <strong id="p1name" class="text-dark  uppercase"></strong></label>
                         <br>
@@ -51,6 +61,7 @@
                 </div>
                 <div class="col-md-5 border border-success">
                     <h5 class="text-center font-weight-bold"><kbd>PLAYER 2 DETAILS</kbd></h5>
+                    <div id="p2image"></div>
                     <div class="form-group">
                         
                         <label class="text-success">Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <strong id="p2name" class="text-dark  uppercase"></strong></label>

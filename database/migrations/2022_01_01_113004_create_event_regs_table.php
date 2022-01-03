@@ -17,6 +17,7 @@ class CreateEventRegsTable extends Migration
             $table->increments('id');
             $table->string('teamName')->nullable()->unique();
             $table->string('teamManagerName')->nullable();
+            $table->integer('phone')->nullable();
 
             $table->string('p1name')->nullable();
             $table->integer('p1nid')->nullable();
@@ -25,6 +26,7 @@ class CreateEventRegsTable extends Migration
             $table->string('p1district')->nullable();
             $table->integer('p1post')->nullable();
             $table->string('p1village')->nullable();
+            $table->text('p1image')->nullable();
 
             $table->string('p2name')->nullable();
             $table->integer('p2nid')->nullable();
@@ -33,6 +35,7 @@ class CreateEventRegsTable extends Migration
             $table->string('p2district')->nullable();
             $table->integer('p2post')->nullable();
             $table->string('p2village')->nullable();
+            $table->text('p2image')->nullable();
 
             $table->string('teamLocation')->nullable();
             $table->string('category')->nullable();

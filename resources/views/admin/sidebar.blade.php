@@ -121,7 +121,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link" href="{{ route('eventDataView') }}">
-        <i class="fa fa-calendar"></i>
+        <i class="fas fa-calendar-alt"></i>
         <span>Event Details</span></a>
     </li>
 

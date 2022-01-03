@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p class="bread"><span><a href="{{ route('home') }}">Home</a></span> / <span>Contact Us</span></p>
+                    <p class="bread"><span><a href="{{ route('home') }}">Home</a></span> / <span>Event Registration</span></p>
                 </div>
             </div>
         </div>
@@ -58,19 +58,26 @@
                         <hr>
                         <h3 class="text-center">TEAM Registration</h3>
                         <hr>
-                        <form action="{{ route('pbceventreg') }}" method="POST" class="contact-form">
+                        <form action="{{ route('pbceventreg') }}" method="POST" enctype="multipart/form-data" class="contact-form">
                             @csrf
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="text-success" for="teamNem">Team Name</label>
                                         <input type="text" id="teamNem" name="teamName" required class="form-control" >
                                     </div>
                                 </div>
+            
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="text-success" for="teamManagerName">Team Manager Name</label>
                                         <input type="text" id="teamManagerName"  name="teamManagerName" required class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-success" for="phone">Phone No</label>
+                                        <input type="tel" id="phone" name="phone" required class="form-control" >
                                     </div>
                                 </div>
                                 <div class="w-100"></div>
@@ -98,6 +105,9 @@
 
                                         <label class="text-success" for="p1village">Village:</label>
                                         <input type="text" id="p1village" name="p1village" required class="form-control" >
+
+                                        <label class="text-success" for="p1image">Photo:</label>
+                                        <input type="file" id="p1image" name="p1image" required class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-1">
@@ -126,6 +136,9 @@
 
                                         <label class="text-success" for="p2village">Village:</label>
                                         <input type="text" id="p2village" name="p2village" required class="form-control" >
+
+                                        <label class="text-success" for="p2image">Photo:</label>
+                                        <input type="file" id="p2image" name="p2image" required class="form-control" >
                                     </div>
                                 </div>
 

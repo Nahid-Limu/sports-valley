@@ -13,9 +13,9 @@
       <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-list"> Registration LIST</i></h6>
       <strong id="success_message" class="text-success"></strong>
       
-      <div class="dropdown no-arrow">
+      {{-- <div class="dropdown no-arrow">
         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#AddBrandModal"><i class="fas fa-plus fa-fw mr-2 text-gray-400"></i>Add New Brand</button>
-      </div>
+      </div> --}}
     </div>
     <!-- Card Body -->
     <div class="card-body">
@@ -25,6 +25,7 @@
                 <th class="text-center">#NO</th>
                 <th class="text-center">Team Name</th>
                 <th class="text-center">Team Manager</th>
+                <th class="text-center">Phone</th>
                 <th class="text-center">Team Location</th>
                 <th class="text-center">Category</th>
                 <th class="text-center">Action</th>
@@ -85,6 +86,10 @@
             name: 'teamManagerName'
         },
         {
+            data: 'phone',
+            name: 'phone'
+        },
+        {
             data: 'teamLocation',
             name: 'teamLocation'
         },
@@ -111,6 +116,7 @@
                 
                 $('#teamName').text(response.teamName);
                 $('#teamManagerName').text(response.teamManagerName);
+                $('#phoneNo').text(response.phone);
                 
                 $('#p1name').text(response.p1name);
                 $('#p1nid').text(response.p1nid);
@@ -119,7 +125,8 @@
                 $('#p1district').text(response.p1district);
                 $('#p1post').text(response.p1post);
                 $('#p1village').text(response.p1village);
-
+                $("#p1image").append('<img src="system_img/'+response.p1image+'" style="width: 180px; height: 200px;">');
+                
                 $('#p2name').text(response.p2name);
                 $('#p2nid').text(response.p2nid);
                 $('#p2dob').text(response.p2dob);
@@ -127,6 +134,7 @@
                 $('#p2district').text(response.p2district);
                 $('#p2post').text(response.p2post);
                 $('#p2village').text(response.p2village);
+                $("#p2image").append('<img src="system_img/'+response.p2image+'" style="width: 180px; height: 200px;">');
 
                 $('#teamLocation').text(response.teamLocation);
                 $('#category').text(response.category);

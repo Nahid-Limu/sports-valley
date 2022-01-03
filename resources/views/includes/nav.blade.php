@@ -56,9 +56,15 @@
           <div class="row">
             <div class="owl-carousel2">
               <div class="item">
-                <div class="col">
-                  <marquee width="100%" behavior="alternate" ><span style="text-align: center" class="text-warning"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> <b style="color:orange;">Good</b> <b style="color: orange">News</b> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></marquee>
-                  <h3><a href="{{ route('pbcevent') }}">Click Here For Badminton Tournament Registation <img src="{{ asset('system_img').'/'.'register-button.png' }}" style="height: 60px"></a></h3>
+                <div class="row">
+                  <div class="col-md-12">
+                    <marquee width="100%" behavior="alternate" ><span  class="text-warning"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> <b style="color:orange;">Good</b> <b style="color: orange">News</b> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></marquee>
+                  </div>
+                  <div class="col-md-12">
+                    <h3 style="margin-left: 50%;"><a href="{{ route('pbcevent') }}">  <img class="displayed" src="{{ asset('system_img').'/'.'pbcLogo.png' }}"  alt=""> <img src="{{ asset('system_img').'/'.'register-button.png' }}" style="height: 60px"></a></h3>
+                  </div>
+                  
+                  
                 </div>
               </div>
               {{-- <div class="item">
