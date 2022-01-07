@@ -1,7 +1,12 @@
 <style>
-    .uppercase {
+.uppercase {
     text-transform: uppercase;
 }
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
 </style>
 <!-- Modal start -->
 <div class="modal fade" id="viewDataModal">
@@ -18,7 +23,8 @@
             <div class="row container">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <h4 class="text-success text-center">Team Name : <strong id="teamName" class="text-dark uppercase"></strong></h4>
+                        <h4 class="text-success text-center"><u>Team Name</u></h4>
+                        <h4 class="text-success text-center"><strong id="teamName" class="text-dark uppercase"></strong></h4>
                     </div>
                 </div>
 
@@ -37,7 +43,7 @@
                 
                 <div class="w-100"></div>
 
-                <div class="col-md-5 border border-danger" style="margin-left: 20px;">
+                <div class="col-md-5 border border-danger" >
                     <h5 class="text-center font-weight-bold"><kbd>PLAYER 1 DETAILS</kbd></h5>
                     <div id="p1image"></div>
                     <div class="form-group">
@@ -82,7 +88,7 @@
 
                 <div class="w-100"></div>
                 <br>
-                <div class="col-md-5 border border-danger" style="margin-left: 20px;">
+                <div class="col-md-5 border border-danger" >
                     <h5 class="text-dark text-center"><u><strong>TEAM LOCATION</strong></u></h5>
                     <h5 class="text-center uppercase" id="teamLocation">bbb</h5>
                 </div>

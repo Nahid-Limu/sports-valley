@@ -3,12 +3,17 @@
     display: block;
     margin-left: auto;
     margin-right: auto 
-    }
+  }
     
-    ul li a:hover {
+  ul li a:hover {
     background-color: yellow;
-  text-decoration: none;
-}
+    text-decoration: none;
+  }
+  .center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
 </style>
 <nav class="colorlib-nav bg-info" role="navigation">
   <div class="">
@@ -52,31 +57,16 @@
   <div class="sale bg-danger">
     <div class="container">
       <div class="row">
-        <div class="col-sm-8 offset-sm-2 text-center">
-          <div class="row">
-            <div class="owl-carousel2">
-              <div class="item">
-                <div class="row">
-                  <div class="col-md-12">
-                    <marquee width="100%" behavior="alternate" ><span  class="text-warning"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> <b style="color:orange;">Good</b> <b style="color: orange">News</b> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></marquee>
-                  </div>
-                  <div class="col-md-12">
-                    <h3 style="margin-left: 50%;"><a href="{{ route('pbcevent') }}">  <img class="displayed" src="{{ asset('system_img').'/'.'pbcLogo.png' }}"  alt=""> <img src="{{ asset('system_img').'/'.'register-button.png' }}" style="height: 60px"></a></h3>
-                  </div>
-                  
-                  
-                </div>
-              </div>
-              {{-- <div class="item">
-                <div class="col">
-                  <h3><a href="#">Our biggest sale yet 50% off all summer shoes</a></h3>
-                </div>
-              </div> --}}
-            </div>
-          </div>
+        <div class="col-md-12">
+          <marquee width="100%" behavior="alternate" ><span  class="text-warning"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> <b style="color:orange;">Good</b> <b style="color: orange">News</b> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></marquee>
         </div>
+        <div class="col-md-12">
+          <h3><a href="{{ route('pbcevent') }}">  <img class="center-block" src="{{ asset('system_img').'/'.'pbcLogo.png' }}"   style="width: 210px; height: 155px;"> <img class="center-block" src="{{ asset('system_img').'/'.'register-button.png' }}" style="height: 60px"></a></h3>
+        </div>
+        
+        
       </div>
     </div>
   </div>
-  {{-- <div style="width:100%"><div style="height:0;padding-bottom:85.5072463768116%;position:relative;width:100%"><iframe allowfullscreen="" frameBorder="0" height="100%" src="https://giphy.com/embed/p57qQtbABJ411xjEhC/video" style="left:0;position:absolute;top:0" width="100%"></iframe></div></div> --}}
+  
 </nav>

@@ -54,7 +54,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="contact-wrap">
-                        <img class="displayed" src="{{ asset('system_img').'/'.'pbcLogo.png' }}"  alt="">
+                        <img class="displayed" src="{{ asset('system_img').'/'.'pbcLogo.png' }}"  style="width: 210px; height: 155px;">
                         <hr>
                         <h3 class="text-center">TEAM Registration</h3>
                         <hr>
@@ -231,7 +231,7 @@
                                             <div style="width: 50%; height: 100px; float: left;"> 
                                                 <b>Arranged by:</b>
                                                 <br>
-                                                <i>Panchagarh Sports Agency</i>
+                                                <i>District sports office,Panchagarh</i>
                                             </div>
                                             <hr>
                                             <div style="margin-left: 50%; height: 100px"  class="text-right"> 
