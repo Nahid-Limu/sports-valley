@@ -33,12 +33,15 @@
   <div class="copy">
     <div class="row">
       <div class="col-sm-12 text-center">
-        <p>
+        <p><kbd>
           <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | 
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span> 
-          <span class="block">Developed by --<a href="https://www.facebook.com/nahidlimu" target="_blank">Nahid Limu</a></span>
-        </p>
+          <span class="block">Developed by --<a href="https://nahid-limu.github.io/" target="_blank" data-toggle="tooltip" data-placement="top" title="Click To See Portfolio">Nahid Limu  </a>
+            ( Get Me <a class="facebook" href="https://web.facebook.com/nahidlimu" target="_blank" data-toggle="tooltip" data-placement="top" title="Get Me In facebook"><i class="fab fa-facebook-square" style=""></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/nahid-hasan-595aa2126/" target="_blank" data-toggle="tooltip" data-placement="top" title="Get Me In linkedin"><i class="fab fa-linkedin-in" style=""></i></a>
+            <a class="twitter" href="#" target="_blank" data-toggle="tooltip" data-placement="top" title="Get Me In twitter"><i class="fab fa-twitter" style=""></i></a>   )</span>
+        </kbd></p>
       </div>
     </div>
   </div>

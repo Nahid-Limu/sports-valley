@@ -125,7 +125,8 @@
                 $('#p1district').text(response.p1district);
                 $('#p1post').text(response.p1post);
                 $('#p1village').text(response.p1village);
-                $("#p1image").append('<img src="system_img/'+response.p1image+'" class="center-block" style="width: 180px; height: 200px;">');
+                $("#p1image").empty().append('<img src="system_img/'+response.p1image+'" class="center-block" style="width: 180px; height: 200px;">');
+                
                 
                 $('#p2name').text(response.p2name);
                 $('#p2nid').text(response.p2nid);
@@ -134,7 +135,7 @@
                 $('#p2district').text(response.p2district);
                 $('#p2post').text(response.p2post);
                 $('#p2village').text(response.p2village);
-                $("#p2image").append('<img src="system_img/'+response.p2image+'" class="center-block" style="width: 180px; height: 200px;">');
+                $("#p2image").empty().append('<img src="system_img/'+response.p2image+'" class="center-block" style="width: 180px; height: 200px;">');
 
                 $('#teamLocation').text(response.teamLocation);
                 $('#category').text(response.category);
