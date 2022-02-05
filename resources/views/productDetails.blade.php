@@ -94,6 +94,27 @@
                             </tbody>
                           </table>
                         <br>
+
+                        <?php
+                            $url=request()->url();
+                        ?>
+                        <hr>
+                        <div class="footer">
+                            <p class="text-info text-center" style="font-size: 15px;">................Share This Post................</p>
+                          
+                            <div class="row ">
+                              <div class="col-md-4" style="margin-top: 10px;">
+                                <i class="fa" aria-hidden="true">{!!Share::page($url,$product->name.' Is Now Available, Buy Before StockOut')->facebook();!!}</i>
+                              </div>
+                              <div class="col-md-4" style="margin-top: 10px;">
+                                <i class="fa" aria-hidden="true">{!!Share::page($url,$product->name)->twitter();!!}</i>
+                              </div>
+                              <div class="col-md-4" style="margin-top: 10px;">
+                                <i class="fa" aria-hidden="true">{!!Share::page($url,$product->name)->linkedin()!!}</i>
+                              </div>
+                            </div>
+                     
+                        </div>
                         <p>
                             {{-- <span class="text-info">Brand: xyz</span><br> --}}
                             

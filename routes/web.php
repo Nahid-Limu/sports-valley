@@ -31,8 +31,21 @@ Route::post('/pbceventreg', 'EventController@pbceventreg')->name('pbceventreg');
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
     // return what you want
-});
+    echo 'clear-cache complete';
 
+});
+Route::get('/updateapp', function() {
+    system('composer dump-autoload');
+    // return what you want
+    echo 'composer dump-autoload complete';
+
+});
+Route::get('/composerUpdate', function() {
+    system('composer update');
+    // return what you want
+    echo 'composer update complete';
+
+});
 /* User route end */
 
 

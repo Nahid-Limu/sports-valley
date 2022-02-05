@@ -39,6 +39,7 @@
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
 	<!-- Magnific Popup -->
 	<link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
 
@@ -118,6 +119,7 @@
  <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
  <!-- Main -->
  <script src="{{ asset('js/main.js') }}"></script>
+ <script src="{{ asset('js/share.js') }}"></script>
 
 
  <!--  Scroll to Top Button -->
