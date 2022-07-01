@@ -85,7 +85,7 @@
                                 <div class="w-100"></div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <input type="submit" value="Send Message" class="btn btn-primary">
+                                        <input type="submit" value="Send Message" class="btn btn-primary" disabled>
                                     </div>
                                 </div>
                             </div>

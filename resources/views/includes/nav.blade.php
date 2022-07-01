@@ -54,7 +54,10 @@
       <br>
     </div>
   </div>
-  <div class="sale bg-danger">
+
+  {{-- one time event section --}}
+
+  {{-- <div class="sale bg-danger">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -67,6 +70,7 @@
         
       </div>
     </div>
-  </div>
-  
+  </div> --}}
+
+  {{-- one time event section --}}
 </nav>
